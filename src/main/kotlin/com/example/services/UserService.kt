@@ -32,10 +32,13 @@ class UserService {
 
         UserEntity[notNullId].name = user.name
         UserEntity[notNullId].lastLogin = user.lastLogin
+        UserEntity[notNullId].updatedAt = LocalDateTime.now()
+        UserEntity[notNullId].updatedBy = null //FIXME User has to cbe updated
         UserEntity[notNullId].toUser()
     }
 
     fun delite(id: Int) = transaction {
         UserEntity[id].deletedAt = LocalDateTime.now()
+        UserEntity[id].deletedBy = null //FIXME User has to cbe updated
     }
 }

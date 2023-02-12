@@ -1,6 +1,6 @@
 package com.example.plugins
 
-import com.example.model.Users
+import com.example.model.*
 import com.example.services.UserService
 import development.sampleUsers
 import org.jetbrains.exposed.sql.*
@@ -13,12 +13,12 @@ fun Application.configureDatabases() {
     )
     transaction {
         SchemaUtils.drop(
-            Users
+            Users,Trays,Shelfs,PartTypes,Manufacturers,Parts
         )
     }
     transaction {
         SchemaUtils.create(
-            Users
+            Users,Trays,Shelfs,PartTypes,Manufacturers,Parts
         )
     }
 

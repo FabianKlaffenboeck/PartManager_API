@@ -8,9 +8,8 @@ import org.jetbrains.exposed.sql.javatime.datetime
 import java.time.LocalDateTime
 
 
-object Users : IntIdTable("user") {
-    val name = varchar("name", 100)
-    val lastLogin = datetime("lastLogin")
+object PartTypes : IntIdTable("PartType") {
+    val type = varchar("type", 100)
 
     val updatedAt = datetime("updatedAt").nullable()
     val updatedBy = reference("updatedBy", Users).nullable()
@@ -18,25 +17,22 @@ object Users : IntIdTable("user") {
     val deletedBy = reference("deletedBy", Users).nullable()
 }
 
-class UserEntity(id: EntityID<Int>) : IntEntity(id) {
-    companion object : IntEntityClass<UserEntity>(Users)
+class PartTypeEntity(id: EntityID<Int>) : IntEntity(id) {
+    companion object : IntEntityClass<PartTypeEntity>(PartTypes)
 
-    var name by Users.name
-    var lastLogin by Users.lastLogin
-    var upda by Users.deletedAt
+    var type by PartTypes.type
 
     var updatedAt by PartTypes.updatedAt
     var updatedBy by PartTypes.updatedBy
     var deletedAt by PartTypes.deletedAt
     var deletedBy by PartTypes.deletedBy
 
-    fun toUser() = User(
-        id.value, name, lastLogin
+    fun toPartType() = PartType(
+        id.value, type
     )
 }
 
-class User(
+class PartType(
     var id: Int?,
-    var name: String,
-    var lastLogin: LocalDateTime
+    var type: String
 )
