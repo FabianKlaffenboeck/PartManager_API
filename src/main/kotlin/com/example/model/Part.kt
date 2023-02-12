@@ -32,10 +32,10 @@ class PartEntity(id: EntityID<Int>) : IntEntity(id) {
     var manufacturer by ManufacturerEntity referencedOn Parts.manufacturer_id
     var tray by TrayEntity referencedOn Parts.tray_id
 
-    var updatedAt by PartTypes.updatedAt
-    var updatedBy by PartTypes.updatedBy
-    var deletedAt by PartTypes.deletedAt
-    var deletedBy by PartTypes.deletedBy
+    var updatedAt by Parts.updatedAt
+    var updatedBy by Parts.updatedBy
+    var deletedAt by Parts.deletedAt
+    var deletedBy by Parts.deletedBy
 
     fun toPart() = Part(
         id.value,

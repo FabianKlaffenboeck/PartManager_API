@@ -25,10 +25,10 @@ class UserEntity(id: EntityID<Int>) : IntEntity(id) {
     var lastLogin by Users.lastLogin
     var upda by Users.deletedAt
 
-    var updatedAt by PartTypes.updatedAt
-    var updatedBy by PartTypes.updatedBy
-    var deletedAt by PartTypes.deletedAt
-    var deletedBy by PartTypes.deletedBy
+    var updatedAt by Users.updatedAt
+    var updatedBy by Users.updatedBy
+    var deletedAt by Users.deletedAt
+    var deletedBy by Users.deletedBy
 
     fun toUser() = User(
         id.value, name, lastLogin
