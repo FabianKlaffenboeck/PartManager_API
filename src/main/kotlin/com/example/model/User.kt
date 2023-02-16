@@ -11,11 +11,6 @@ import java.time.LocalDateTime
 object Users : IntIdTable("user") {
     val name = varchar("name", 100)
     val lastLogin = datetime("lastLogin")
-
-    val updatedAt = datetime("updatedAt").nullable()
-    val updatedBy = reference("updatedBy", Users).nullable()
-    val deletedAt = datetime("deletedAt").nullable()
-    val deletedBy = reference("deletedBy", Users).nullable()
 }
 
 class UserEntity(id: EntityID<Int>) : IntEntity(id) {
@@ -23,12 +18,6 @@ class UserEntity(id: EntityID<Int>) : IntEntity(id) {
 
     var name by Users.name
     var lastLogin by Users.lastLogin
-    var upda by Users.deletedAt
-
-    var updatedAt by Users.updatedAt
-    var updatedBy by Users.updatedBy
-    var deletedAt by Users.deletedAt
-    var deletedBy by Users.deletedBy
 
     fun toUser() = User(
         id.value, name, lastLogin

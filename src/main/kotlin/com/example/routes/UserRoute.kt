@@ -30,7 +30,7 @@ fun Application.UserRoute(userService: UserService) {
             }
             delete("{id}") {
                 val id: Int = (call.parameters["id"] ?: return@delete call.respond(HttpStatusCode.BadRequest)).toInt()
-                call.respond(userService.delite(id))
+//                call.respond(userService.delite(id))
             }
             put {
                 call.respond(HttpStatusCode.NotImplemented)
