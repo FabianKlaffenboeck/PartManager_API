@@ -14,7 +14,7 @@ object Parts : IntIdTable("Part") {
 
     val partType_id = reference("partType_id", PartTypes)
     val manufacturer_id = reference("manufacturer_id", Manufacturers)
-    val tray_id = reference("tray_id", PartTypes)
+    val tray_id = reference("tray_id", Trays)
 
     val updatedAt = datetime("updatedAt").nullable()
     val updatedBy = varchar("updatedBy",100).nullable()
