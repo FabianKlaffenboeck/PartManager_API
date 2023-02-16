@@ -1,3 +1,5 @@
+import org.gradle.kotlin.dsl.support.unzipTo
+
 val ktor_version: String by project
 val kotlin_version: String by project
 val logback_version: String by project
@@ -43,4 +45,13 @@ dependencies {
 
     testImplementation("io.ktor:ktor-server-tests-jvm:$ktor_version")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+}
+
+tasks.register("unzip") {
+    doLast {
+        unzipTo(file("${buildDir}/distributions"), file("${buildDir}/distributions/PartManager-${version}.zip"))
+    }
+}
+tasks.named("unzip") {
+    dependsOn(tasks.named("build"))
 }
