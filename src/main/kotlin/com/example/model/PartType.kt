@@ -5,16 +5,15 @@ import org.jetbrains.exposed.dao.IntEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.dao.id.IntIdTable
 import org.jetbrains.exposed.sql.javatime.datetime
-import java.time.LocalDateTime
 
 
 object PartTypes : IntIdTable("PartType") {
     val type = varchar("type", 100)
 
     val updatedAt = datetime("updatedAt").nullable()
-    val updatedBy = reference("updatedBy", Users).nullable()
+    val updatedBy = varchar("updatedBy",100).nullable()
     val deletedAt = datetime("deletedAt").nullable()
-    val deletedBy = reference("deletedBy", Users).nullable()
+    val deletedBy = varchar("deletedBy",100).nullable()
 }
 
 class PartTypeEntity(id: EntityID<Int>) : IntEntity(id) {

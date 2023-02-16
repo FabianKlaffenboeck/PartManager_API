@@ -17,9 +17,9 @@ object Parts : IntIdTable("Part") {
     val tray_id = reference("tray_id", PartTypes)
 
     val updatedAt = datetime("updatedAt").nullable()
-    val updatedBy = reference("updatedBy", Users).nullable()
+    val updatedBy = varchar("updatedBy",100).nullable()
     val deletedAt = datetime("deletedAt").nullable()
-    val deletedBy = reference("deletedBy", Users).nullable()
+    val deletedBy = varchar("deletedBy",100).nullable()
 }
 
 class PartEntity(id: EntityID<Int>) : IntEntity(id) {

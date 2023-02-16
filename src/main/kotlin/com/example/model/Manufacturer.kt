@@ -11,9 +11,9 @@ object Manufacturers : IntIdTable("Manufacturer") {
     val name = varchar("name", 100)
 
     val updatedAt = datetime("updatedAt").nullable()
-    val updatedBy = reference("updatedBy", Users).nullable()
+    val updatedBy = varchar("updatedBy",100).nullable()
     val deletedAt = datetime("deletedAt").nullable()
-    val deletedBy = reference("deletedBy", Users).nullable()
+    val deletedBy = varchar("deletedBy",100).nullable()
 }
 
 class ManufacturerEntity(id: EntityID<Int>) : IntEntity(id) {

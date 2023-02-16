@@ -23,14 +23,14 @@ fun Application.UserRoute(userService: UserService) {
                 val user = call.receive<User>()
                 if (user.id == null) {
                     return@post call.respond(
-                        userService.add(user)
+                        userService.add(user, "TBD")
                     )
                 }
-                call.respond(userService.update(user))
+                call.respond(userService.update(user, "TBD"))
             }
             delete("{id}") {
                 val id: Int = (call.parameters["id"] ?: return@delete call.respond(HttpStatusCode.BadRequest)).toInt()
-//                call.respond(userService.delite(id))
+                call.respond(userService.delite(id, "TBD"))
             }
             put {
                 call.respond(HttpStatusCode.NotImplemented)
