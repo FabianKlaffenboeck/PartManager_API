@@ -31,6 +31,7 @@ class TrayService {
 
     fun update(tray: Tray, user: String): Tray = transaction {
         val notNullId = tray.id ?: -1
+
         TrayEntity[notNullId].label = tray.label
 
         TrayEntity[notNullId].updatedAt = LocalDateTime.now()
