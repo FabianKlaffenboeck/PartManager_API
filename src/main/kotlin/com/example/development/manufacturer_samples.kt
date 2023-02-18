@@ -10,5 +10,9 @@ val sampleManufacturers = listOf(
     Manufacturer(
         id = 2,
         name = "Microchip"
+    ),
+    Manufacturer(
+        id = 3,
+        name = "on semiconductor"
     )
 )

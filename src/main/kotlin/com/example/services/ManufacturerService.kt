@@ -10,7 +10,7 @@ import java.time.LocalDateTime
 class ManufacturerService {
 
     fun getAll(): List<Manufacturer> = transaction {
-        val query = Op.build { Manufacturers.id.isNotNull() }
+        val query = Op.build { Manufacturers.deletedAt.isNull() }
         ManufacturerEntity.find(query).map(ManufacturerEntity::toManufacturer)
     }
 

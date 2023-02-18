@@ -12,7 +12,7 @@ import java.time.LocalDateTime
 class ShelfService {
 
     fun getAll(): List<Shelf> = transaction {
-        val query = Op.build { Shelfs.id.isNotNull() }
+        val query = Op.build { Shelfs.deletedAt.isNull() }
         ShelfEntity.find(query).map(ShelfEntity::toShelf)
     }
 

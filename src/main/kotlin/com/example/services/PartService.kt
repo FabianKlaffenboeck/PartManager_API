@@ -8,7 +8,7 @@ import java.time.LocalDateTime
 class PartService {
 
     fun getAll(): List<Part> = transaction {
-        val query = Op.build { Parts.id.isNotNull() }
+        val query = Op.build { Parts.deletedAt.isNull() }
         PartEntity.find(query).map(PartEntity::toPart)
     }
 

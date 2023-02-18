@@ -10,7 +10,7 @@ import java.time.LocalDateTime
 class PartTypeService {
 
     fun getAll(): List<PartType> = transaction {
-        val query = Op.build { PartTypes.id.isNotNull() }
+        val query = Op.build { PartTypes.deletedAt.isNull() }
         PartTypeEntity.find(query).map(PartTypeEntity::toPartType)
     }
 

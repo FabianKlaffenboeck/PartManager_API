@@ -10,7 +10,7 @@ import java.time.LocalDateTime
 class TrayService {
 
     fun getAll(): List<Tray> = transaction {
-        val query = Op.build { Trays.id.isNotNull() }
+        val query = Op.build { Trays.deletedAt.isNull() }
         TrayEntity.find(query).map(TrayEntity::toTray)
     }
 

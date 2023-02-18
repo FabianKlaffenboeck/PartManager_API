@@ -10,7 +10,7 @@ import java.time.LocalDateTime
 class UserService {
 
     fun getAll(): List<User> = transaction {
-        val query = Op.build { Users.id.isNotNull() }
+        val query = Op.build { Users.deletedAt.isNull() }
         UserEntity.find(query).map(UserEntity::toUser)
     }
 
