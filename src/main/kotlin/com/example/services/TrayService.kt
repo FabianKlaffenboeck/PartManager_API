@@ -22,7 +22,7 @@ class TrayService {
 
     fun add(tray: Tray, user: String): Tray = transaction {
         TrayEntity.new {
-            label = tray.label
+            name = tray.name
 
             updatedAt = LocalDateTime.now()
             updatedBy = user
@@ -32,7 +32,7 @@ class TrayService {
     fun update(tray: Tray, user: String): Tray = transaction {
         val notNullId = tray.id ?: -1
 
-        TrayEntity[notNullId].label = tray.label
+        TrayEntity[notNullId].name = tray.name
 
         TrayEntity[notNullId].updatedAt = LocalDateTime.now()
         TrayEntity[notNullId].updatedBy = user

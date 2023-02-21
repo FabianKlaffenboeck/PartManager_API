@@ -22,7 +22,7 @@ class PartTypeService {
 
     fun add(partType: PartType, user: String): PartType = transaction {
         PartTypeEntity.new {
-            type = partType.type
+            name = partType.name
 
             updatedAt = LocalDateTime.now()
             updatedBy = user
@@ -32,7 +32,7 @@ class PartTypeService {
     fun update(partType: PartType, user: String): PartType = transaction {
         val notNullId = partType.id ?: -1
 
-        PartTypeEntity[notNullId].type = partType.type
+        PartTypeEntity[notNullId].name = partType.name
 
         PartTypeEntity[notNullId].updatedAt = LocalDateTime.now()
         PartTypeEntity[notNullId].updatedBy = user

@@ -8,7 +8,7 @@ import org.jetbrains.exposed.sql.javatime.datetime
 
 
 object PartTypes : IntIdTable("PartType") {
-    val type = varchar("type", 100)
+    val name = varchar("name", 100)
 
     val updatedAt = datetime("updatedAt").nullable()
     val updatedBy = varchar("updatedBy",100).nullable()
@@ -19,7 +19,7 @@ object PartTypes : IntIdTable("PartType") {
 class PartTypeEntity(id: EntityID<Int>) : IntEntity(id) {
     companion object : IntEntityClass<PartTypeEntity>(PartTypes)
 
-    var type by PartTypes.type
+    var name by PartTypes.name
 
     var updatedAt by PartTypes.updatedAt
     var updatedBy by PartTypes.updatedBy
@@ -27,11 +27,11 @@ class PartTypeEntity(id: EntityID<Int>) : IntEntity(id) {
     var deletedBy by PartTypes.deletedBy
 
     fun toPartType() = PartType(
-        id.value, type
+        id.value, name
     )
 }
 
 class PartType(
     var id: Int?,
-    var type: String
+    var name: String
 )
