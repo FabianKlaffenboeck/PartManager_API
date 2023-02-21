@@ -35,6 +35,11 @@ fun Application.PartTypeRoute(partTypeService: PartTypeService) {
             put {
                 call.respond(HttpStatusCode.NotImplemented)
             }
+            route("/units"){
+                get {
+                    call.respond(partTypeService.getUnits())
+                }
+            }
         }
     }
 }

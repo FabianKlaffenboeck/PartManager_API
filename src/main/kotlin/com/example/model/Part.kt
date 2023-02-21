@@ -11,6 +11,7 @@ object Parts : IntIdTable("Part") {
 
     val name = varchar("name", 100)
     val quantity = integer("quantity")
+    val value = double("value").nullable()
 
     val partType_id = reference("partType_id", PartTypes)
     val manufacturer_id = reference("manufacturer_id", Manufacturers)
@@ -27,6 +28,7 @@ class PartEntity(id: EntityID<Int>) : IntEntity(id) {
 
     var name by Parts.name
     var quantity by Parts.quantity
+    var value by Parts.value
 
     var partType by PartTypeEntity referencedOn Parts.partType_id
     var manufacturer by ManufacturerEntity referencedOn Parts.manufacturer_id
@@ -41,6 +43,7 @@ class PartEntity(id: EntityID<Int>) : IntEntity(id) {
         id.value,
         name,
         quantity,
+        value,
         partType.toPartType(),
         manufacturer.toManufacturer(),
         tray.toTray(),
@@ -51,6 +54,7 @@ class Part(
     var id: Int?,
     var name: String,
     var quantity: Int,
+    var value: Double?,
     var partType: PartType,
     var manufacturer: Manufacturer,
     var tray: Tray,
