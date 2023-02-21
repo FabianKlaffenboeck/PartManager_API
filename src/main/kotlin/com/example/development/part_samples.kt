@@ -1,5 +1,6 @@
 package com.example.development
 
+import com.example.model.MeasurementUnit
 import com.example.model.Part
 import com.example.model.User
 import java.time.LocalDateTime
@@ -9,6 +10,7 @@ val sampleParts = listOf(
         id = 1,
         name = "Mcp 2515",
         quantity = 3,
+        measurementUnit = null,
         value = null,
         partType = samplePartTypes[0],
         manufacturer = sampleManufacturers[1],
@@ -18,6 +20,7 @@ val sampleParts = listOf(
         id = 2,
         name = "Mcp 2552",
         quantity = 3,
+        measurementUnit = MeasurementUnit.Ohm,
         value = null,
         partType = samplePartTypes[0],
         manufacturer = sampleManufacturers[1],
@@ -27,6 +30,7 @@ val sampleParts = listOf(
         id = 3,
         name = "NCP1117",
         quantity = 3,
+        measurementUnit = MeasurementUnit.Farad,
         value = null,
         partType = samplePartTypes[0],
         manufacturer = sampleManufacturers[2],

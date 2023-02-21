@@ -3,7 +3,7 @@ package com.example.services
 import com.example.model.PartType
 import com.example.model.PartTypeEntity
 import com.example.model.PartTypes
-import com.example.model.measurementUnit
+import com.example.model.MeasurementUnit
 import org.jetbrains.exposed.sql.Op
 import org.jetbrains.exposed.sql.transactions.transaction
 import java.time.LocalDateTime
@@ -21,12 +21,11 @@ class PartTypeService {
         }.firstOrNull()?.toPartType()
     }
 
-    fun getUnits(): List<measurementUnit> = measurementUnit.values().asList()
+    fun getUnits(): List<MeasurementUnit> = MeasurementUnit.values().asList()
 
     fun add(partType: PartType, user: String): PartType = transaction {
         PartTypeEntity.new {
             name = partType.name
-            unit = partType.unit
 
             updatedAt = LocalDateTime.now()
             updatedBy = user
@@ -37,7 +36,6 @@ class PartTypeService {
         val notNullId = partType.id ?: -1
 
         PartTypeEntity[notNullId].name = partType.name
-        PartTypeEntity[notNullId].unit = partType.unit
 
         PartTypeEntity[notNullId].updatedAt = LocalDateTime.now()
         PartTypeEntity[notNullId].updatedBy = user

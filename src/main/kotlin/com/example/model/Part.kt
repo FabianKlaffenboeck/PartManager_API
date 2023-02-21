@@ -11,6 +11,7 @@ object Parts : IntIdTable("Part") {
 
     val name = varchar("name", 100)
     val quantity = integer("quantity")
+    val measurementUnit = enumeration("measurementUnit", MeasurementUnit::class).nullable()
     val value = double("value").nullable()
 
     val partType_id = reference("partType_id", PartTypes)
@@ -18,9 +19,9 @@ object Parts : IntIdTable("Part") {
     val tray_id = reference("tray_id", Trays)
 
     val updatedAt = datetime("updatedAt").nullable()
-    val updatedBy = varchar("updatedBy",100).nullable()
+    val updatedBy = varchar("updatedBy", 100).nullable()
     val deletedAt = datetime("deletedAt").nullable()
-    val deletedBy = varchar("deletedBy",100).nullable()
+    val deletedBy = varchar("deletedBy", 100).nullable()
 }
 
 class PartEntity(id: EntityID<Int>) : IntEntity(id) {
@@ -28,6 +29,7 @@ class PartEntity(id: EntityID<Int>) : IntEntity(id) {
 
     var name by Parts.name
     var quantity by Parts.quantity
+    var measurementUnit by Parts.measurementUnit
     var value by Parts.value
 
     var partType by PartTypeEntity referencedOn Parts.partType_id
@@ -43,6 +45,7 @@ class PartEntity(id: EntityID<Int>) : IntEntity(id) {
         id.value,
         name,
         quantity,
+        measurementUnit,
         value,
         partType.toPartType(),
         manufacturer.toManufacturer(),
@@ -54,6 +57,7 @@ class Part(
     var id: Int?,
     var name: String,
     var quantity: Int,
+    var measurementUnit: MeasurementUnit?,
     var value: Double?,
     var partType: PartType,
     var manufacturer: Manufacturer,
