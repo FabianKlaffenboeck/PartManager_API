@@ -22,6 +22,7 @@ class PartService {
         PartEntity.new {
             name = part.name
             quantity = part.quantity
+            value = part.value
             partType = part.partType.id?.let { PartTypeEntity.findById(it) }!!
             manufacturer = part.manufacturer.id?.let { ManufacturerEntity.findById(it) }!!
             tray = part.tray.id?.let { TrayEntity.findById(it) }!!
@@ -37,6 +38,7 @@ class PartService {
 
         PartEntity[notNullId].name = part.name
         PartEntity[notNullId].quantity = part.quantity
+        PartEntity[notNullId].value = part.value
         PartEntity[notNullId].partType = part.partType.id?.let { PartTypeEntity.findById(it) }!!
         PartEntity[notNullId].manufacturer = part.manufacturer.id?.let { ManufacturerEntity.findById(it) }!!
         PartEntity[notNullId].tray = part.tray.id?.let { TrayEntity.findById(it) }!!
