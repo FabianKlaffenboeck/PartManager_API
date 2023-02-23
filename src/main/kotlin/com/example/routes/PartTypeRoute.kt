@@ -41,5 +41,10 @@ fun Application.PartTypeRoute(partTypeService: PartTypeService) {
                 call.respond(partTypeService.getUnits())
             }
         }
+        route("footprint"){
+            get {
+                call.respond(partTypeService.getFootprints())
+            }
+        }
     }
 }

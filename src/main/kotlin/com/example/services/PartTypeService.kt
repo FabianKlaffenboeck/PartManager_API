@@ -1,9 +1,6 @@
 package com.example.services
 
-import com.example.model.PartType
-import com.example.model.PartTypeEntity
-import com.example.model.PartTypes
-import com.example.model.MeasurementUnit
+import com.example.model.*
 import org.jetbrains.exposed.sql.Op
 import org.jetbrains.exposed.sql.transactions.transaction
 import java.time.LocalDateTime
@@ -22,6 +19,8 @@ class PartTypeService {
     }
 
     fun getUnits(): List<MeasurementUnit> = MeasurementUnit.values().asList()
+
+    fun getFootprints(): List<Footprint> = Footprint.values().asList()
 
     fun add(partType: PartType, user: String): PartType = transaction {
         PartTypeEntity.new {
