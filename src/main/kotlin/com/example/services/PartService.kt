@@ -24,6 +24,7 @@ class PartService {
             quantity = part.quantity
             measurementUnit = part.measurementUnit
             value = part.value
+            footprint = part.footprint
             partType = part.partType.id?.let { PartTypeEntity.findById(it) }!!
             manufacturer = part.manufacturer.id?.let { ManufacturerEntity.findById(it) }!!
             tray = part.tray.id?.let { TrayEntity.findById(it) }!!
@@ -41,6 +42,7 @@ class PartService {
         PartEntity[notNullId].quantity = part.quantity
         PartEntity[notNullId].measurementUnit = part.measurementUnit
         PartEntity[notNullId].value = part.value
+        PartEntity[notNullId].footprint = part.footprint
         PartEntity[notNullId].partType = part.partType.id?.let { PartTypeEntity.findById(it) }!!
         PartEntity[notNullId].manufacturer = part.manufacturer.id?.let { ManufacturerEntity.findById(it) }!!
         PartEntity[notNullId].tray = part.tray.id?.let { TrayEntity.findById(it) }!!

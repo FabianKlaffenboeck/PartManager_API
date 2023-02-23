@@ -13,6 +13,7 @@ object Parts : IntIdTable("Part") {
     val quantity = integer("quantity")
     val measurementUnit = enumeration("measurementUnit", MeasurementUnit::class).nullable()
     val value = double("value").nullable()
+    val footprint = enumeration("footprint", Footprint::class).nullable()
 
     val partType_id = reference("partType_id", PartTypes)
     val manufacturer_id = reference("manufacturer_id", Manufacturers)
@@ -31,6 +32,7 @@ class PartEntity(id: EntityID<Int>) : IntEntity(id) {
     var quantity by Parts.quantity
     var measurementUnit by Parts.measurementUnit
     var value by Parts.value
+    var footprint by Parts.footprint
 
     var partType by PartTypeEntity referencedOn Parts.partType_id
     var manufacturer by ManufacturerEntity referencedOn Parts.manufacturer_id
@@ -47,6 +49,7 @@ class PartEntity(id: EntityID<Int>) : IntEntity(id) {
         quantity,
         measurementUnit,
         value,
+        footprint,
         partType.toPartType(),
         manufacturer.toManufacturer(),
         tray.toTray(),
@@ -59,6 +62,7 @@ class Part(
     var quantity: Int,
     var measurementUnit: MeasurementUnit?,
     var value: Double?,
+    var footprint: Footprint?,
     var partType: PartType,
     var manufacturer: Manufacturer,
     var tray: Tray,
