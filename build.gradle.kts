@@ -39,6 +39,8 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-java-time:$exposed_version")
 
     implementation("org.xerial:sqlite-jdbc:$sqlite_version")
+    implementation("mysql:mysql-connector-java:8.0.28")
+
     implementation("io.ktor:ktor-server-netty-jvm:$ktor_version")
     implementation("ch.qos.logback:logback-classic:$logback_version")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
