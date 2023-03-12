@@ -24,5 +24,7 @@ deploy:
     - docker:dind
   script:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - docker build -t $CI_REGISTRY/partmanager/api:test .
-    - docker push $CI_REGISTRY/partmanager/api:test
+    - docker rmi --force 37076284ed4d
+    - docker rmi --force 7cd52847ad77
+    - docker build -t $CI_REGISTRY/partmanager/api:latest .
+    - docker push $CI_REGISTRY/partmanager/api:latest
