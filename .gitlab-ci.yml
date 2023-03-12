@@ -7,15 +7,19 @@ build:
   stage: build
   script:
     - gradle installDist
-cache:
-  paths:
-    - build/
+  artifacts:
+    paths:
+      - build/
+    expire_in: 2 hours
+  cache:
+    paths:
+      - build/
 
 deploy:
   image: docker:stable
   stage: deploy
-#  only:
-#    - master
+  #  only:
+  #    - master
   services:
     - docker:dind
   script:
