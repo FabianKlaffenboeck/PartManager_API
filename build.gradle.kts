@@ -48,12 +48,3 @@ dependencies {
     testImplementation("io.ktor:ktor-server-tests-jvm:$ktor_version")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
 }
-
-tasks.register("unzip") {
-    doLast {
-        unzipTo(file("${buildDir}/distributions"), file("${buildDir}/distributions/PartManager-${version}.zip"))
-    }
-}
-tasks.named("unzip") {
-    dependsOn(tasks.named("build"))
-}
