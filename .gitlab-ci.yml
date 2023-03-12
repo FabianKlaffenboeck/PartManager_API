@@ -2,21 +2,20 @@ stages:
   - build
   - deploy
 
-cache:
-  paths:
-    - build/
-
 build:
   image: gradle:7.5-jdk18
   stage: build
   script:
     - gradle installDist
+cache:
+  paths:
+    - build/
 
 deploy:
   image: docker:stable
   stage: deploy
-  #  only:
-  #    - master
+#  only:
+#    - master
   services:
     - docker:dind
   script:
