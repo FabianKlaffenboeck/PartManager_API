@@ -18,8 +18,8 @@ build:
 deploy:
   image: docker:stable
   stage: deploy
-  #  only:
-  #    - master
+  only:
+    - master
   services:
     - docker:dind
   script:
