@@ -16,10 +16,10 @@ fun main() {
 
 fun Application.module() {
 
-    val dbUrl: String = System.getenv("dbUrl")
-    val dbUser: String = System.getenv("dbUser")
-    val dbDriver: String = System.getenv("dbDriver")
-    val dbPW: String = System.getenv("dbPW")
+    val dbUrl: String = System.getenv("DBURL")
+    val dbUser: String = System.getenv("DBUSER")
+    val dbDriver: String = System.getenv("DBDRIVER")
+    val dbPW: String = System.getenv("DBPW")
 
     configureDatabases(dbUrl, dbUser, dbDriver, dbPW)
     configureHTTP()
