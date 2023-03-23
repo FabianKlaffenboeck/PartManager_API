@@ -8,20 +8,7 @@ import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.transactions.transaction
 
-fun Application.configureDatabases() {
-
-    val useMariaDB: Boolean = (System.getenv("useMariaDB") ?: "false").toBoolean()
-
-    val dbUser: String = System.getenv("dbUser") ?: "root"
-    val dbPW: String = System.getenv("dbPW") ?: ""
-
-    var dbUrl: String = System.getenv("dbUrl") ?: "jdbc:sqlite:TestDB"
-    var dbDriver = "org.sqlite.JDBC"
-
-    if (useMariaDB) {
-        dbUrl = "jdbc:mysql:$dbUrl"
-        dbDriver = "com.mysql.cj.jdbc.Driver"
-    }
+fun Application.configureDatabases(dbUrl:String,dbUser:String,dbDriver:String,dbPW:String) {
 
     val database = Database.connect(
         url = dbUrl, user = dbUser, driver = dbDriver, password = dbPW
@@ -37,7 +24,6 @@ fun Application.configureDatabases() {
             Users, Trays, Shelfs, ShelfTrays, PartTypes, Manufacturers, Parts
         )
     }
-
 
 
     transaction {

@@ -15,7 +15,13 @@ fun main() {
 }
 
 fun Application.module() {
-    configureDatabases()
+
+    val dbUrl: String = System.getenv("dbUrl")
+    val dbUser: String = System.getenv("dbUser")
+    val dbDriver: String = System.getenv("dbDriver")
+    val dbPW: String = System.getenv("dbPW")
+
+    configureDatabases(dbUrl, dbUser, dbDriver, dbPW)
     configureHTTP()
     configureSerialization()
 
