@@ -16,12 +16,11 @@ fun main() {
 
 fun Application.module() {
 
-    val dbUrl: String = System.getenv("DBURL")
-    val dbUser: String = System.getenv("DBUSER")
-    val dbDriver: String = System.getenv("DBDRIVER")
-    val dbPW: String = System.getenv("DBPW")
+    val dbUrl: String = System.getenv("DBURL") ?: "jdbc:sqlite:TestDB"
+    val dbUser: String = System.getenv("DBUSER") ?: "root"
+    val dbPW: String = System.getenv("DBPW") ?: ""
 
-    configureDatabases(dbUrl, dbUser, dbDriver, dbPW)
+    configureDatabases(dbUrl, dbUser, dbPW)
     configureHTTP()
     configureSerialization()
 
