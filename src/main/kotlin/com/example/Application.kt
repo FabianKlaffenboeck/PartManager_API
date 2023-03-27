@@ -19,8 +19,10 @@ fun Application.module() {
     val dbUrl: String = System.getenv("DBURL") ?: "jdbc:sqlite:TestDB"
     val dbUser: String = System.getenv("DBUSER") ?: "root"
     val dbPW: String = System.getenv("DBPW") ?: ""
+    val initDB: Boolean = System.getenv("INITDB").toBoolean()
+    val populateDB: Boolean = System.getenv("POPULATEDB").toBoolean()
 
-    configureDatabases(dbUrl, dbUser, dbPW)
+    configureDatabases(dbUrl, dbUser, dbPW,initDB,populateDB)
     configureHTTP()
     configureSerialization()
 
