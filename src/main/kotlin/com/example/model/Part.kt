@@ -7,7 +7,7 @@ import org.jetbrains.exposed.dao.id.IntIdTable
 import org.jetbrains.exposed.sql.javatime.datetime
 
 
-object Parts : IntIdTable("Part") {
+object Parts : IntIdTable("Parts") {
 
     val name = varchar("name", 100)
     val quantity = integer("quantity")

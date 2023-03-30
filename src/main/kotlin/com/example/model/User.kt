@@ -8,7 +8,7 @@ import org.jetbrains.exposed.sql.javatime.datetime
 import java.time.LocalDateTime
 
 
-object Users : IntIdTable("user") {
+object Users : IntIdTable("Users") {
     val name = varchar("name", 100)
     val lastLogin = datetime("lastLogin")
 

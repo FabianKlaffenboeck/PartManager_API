@@ -7,7 +7,7 @@ import org.jetbrains.exposed.dao.id.IntIdTable
 import org.jetbrains.exposed.sql.javatime.datetime
 
 
-object Manufacturers : IntIdTable("Manufacturer") {
+object Manufacturers : IntIdTable("Manufacturers") {
     val name = varchar("name", 100)
 
     val updatedAt = datetime("updatedAt").nullable()
