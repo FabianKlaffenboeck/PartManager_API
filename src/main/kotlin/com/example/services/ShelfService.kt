@@ -23,6 +23,13 @@ class ShelfService {
     }
 
     fun add(shelf: Shelf, user: String): Shelf = transaction {
+
+        for (i in 0..shelf.trays.size-1) {
+            if (TrayEntity.findById(shelf.trays[i].id ?: 0) == null) {
+                shelf.trays[i].id = TrayService().add(shelf.trays[i], user).id
+            }
+        }
+
         ShelfEntity.new {
             name = shelf.name
             trays = SizedCollection(shelf.trays.map {
