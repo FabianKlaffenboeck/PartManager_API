@@ -12,7 +12,7 @@ enum class MeasurementUnit {
 }
 
 enum class Footprint {
-    _0402, _0603, _1005, _1608, _2012, _2520, _3216, _3225, _4516, _4532, _5025, _6332
+    _0402, _0603, _1005, _1608, _2012, _2520, _3216, _3225, _4516, _4532, _5025, _6332, leaded
 }
 
 object PartTypes : IntIdTable("PartTypes") {
