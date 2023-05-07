@@ -8,7 +8,7 @@ import org.jetbrains.exposed.sql.javatime.datetime
 
 
 enum class MeasurementUnit {
-    Ohm, Farad, Henry
+    Ohm, KOhm, MOhm, pFarad, nFarad, µFarad, Farad, pHenry, nHenry, µHenry, Henry
 }
 
 enum class Footprint {
