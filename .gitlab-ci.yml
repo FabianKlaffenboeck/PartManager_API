@@ -17,6 +17,7 @@ test:
     paths:
       - build/reports/tests/test
     expire_in: 2 hours
+    expose_as: 'Unit Test Reports'
 
 build:
   image: gradle:7.5-jdk18
