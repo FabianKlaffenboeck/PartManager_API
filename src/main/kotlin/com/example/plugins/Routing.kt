@@ -4,10 +4,8 @@ import io.ktor.server.routing.*
 import io.ktor.server.response.*
 import io.ktor.server.application.*
 
-fun Application.defaultRoute() {
-    routing {
-        get("/") {
-            call.respondText("Hello World!")
-        }
+fun Route.defaultRoute() {
+    get {
+        call.respondText("The PartManager API")
     }
 }
