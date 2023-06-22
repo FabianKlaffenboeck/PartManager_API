@@ -1,42 +1,10 @@
-stages:
-  - test
-  - build
-  - deploy
-
 variables:
   DOCKER_DRIVER: overlay2
   BUILDX_VERSION: "v0.6.1"
   BUILDX_ARCH: "linux-amd64"
 
-test:
-  image: gradle:7.5-jdk18
-  stage: test
-  script:
-    - gradle test
-  artifacts:
-    paths:
-      - build/reports/tests/test
-    expire_in: 2 hours
-    expose_as: 'Unit Test Reports'
-
-build:
-  image: gradle:7.5-jdk18
-  stage: build
-  script:
-    - gradle installDist
-  artifacts:
-    paths:
-      - build/
-    expire_in: 2 hours
-  cache:
-    paths:
-      - build/
-
-docker-build:
+.docker-job: &docker-job
   image: docker:stable
-  stage: deploy
-  only:
-    - master
   services:
     - docker:dind
   before_script:
@@ -47,5 +15,47 @@ docker-build:
     - docker-buildx create --use
     - docker-buildx build
       --platform linux/amd64,linux/arm/v7,linux/arm64/v8
-      --tag ${CI_REGISTRY_IMAGE}:latest
+      --tag $CI_REGISTRY_IMAGE:$IMAGE_TAG
       --push .
+
+
+.gradle-job: &gradle-job
+  image: gradle:7.5-jdk18
+
+stages:
+  - test
+  - build
+  - deploy
+
+test:
+  <<: *gradle-job
+  stage: test
+  script:
+    - gradle test
+  artifacts:
+    paths:
+      - build/reports/tests/test
+    expire_in: 2 hours
+    expose_as: 'Unit Test Reports'
+
+build:
+  <<: *gradle-job
+  stage: build
+  script:
+    - gradle installDist
+
+deploy:
+  <<: *docker-job
+  stage: deploy
+  only:
+    - master
+  variables:
+    IMAGE-TAG: $CI_COMMIT_REF_NAME
+
+deploy-latest:
+  <<: *docker-job
+  stage: deploy
+  only:
+    - master
+  variables:
+    IMAGE-TAG: latest
