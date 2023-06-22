@@ -14,12 +14,11 @@ variables:
     - docker:dind
   before_script:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-  #    - wget -O /usr/bin/docker-buildx https://github.com/docker/buildx/releases/download/${BUILDX_VERSION}/buildx-${BUILDX_VERSION}.${BUILDX_ARCH}
-  #    - chmod +x /usr/bin/docker-buildx
+    - wget -O /usr/bin/docker-buildx https://github.com/docker/buildx/releases/download/${BUILDX_VERSION}/buildx-${BUILDX_VERSION}.${BUILDX_ARCH}
+    - chmod +x /usr/bin/docker-buildx
   script:
     - echo $IMAGE_TAG
     #    - docker-buildx create --use
-    - ls
 #    - docker-buildx build
 #      --platform linux/amd64,linux/arm/v7,linux/arm64/v8
 #      --tag ${CI_REGISTRY_IMAGE}:$IMAGE_TAG
