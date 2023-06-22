@@ -43,6 +43,13 @@ build:
   stage: build
   script:
     - gradle installDist
+  artifacts:
+    paths:
+      - build/
+    expire_in: 2 hours
+  cache:
+    paths:
+      - build/
 
 deploy:
   <<: *docker-job
