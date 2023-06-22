@@ -17,7 +17,6 @@ variables:
     - wget -O /usr/bin/docker-buildx https://github.com/docker/buildx/releases/download/${BUILDX_VERSION}/buildx-${BUILDX_VERSION}.${BUILDX_ARCH}
     - chmod +x /usr/bin/docker-buildx
   script:
-    - echo $IMAGE_TAG
     - docker-buildx create --use
     - docker-buildx build
       --platform linux/amd64,linux/arm/v7,linux/arm64/v8
@@ -62,7 +61,7 @@ deploy:
 deploy-latest:
   <<: *docker-job
   stage: deploy
-  #  only:
-  #    - master
+  only:
+    - master
   variables:
     IMAGE_TAG: latest
