@@ -15,7 +15,7 @@ variables:
     - docker-buildx create --use
     - docker-buildx build
       --platform linux/amd64,linux/arm/v7,linux/arm64/v8
-      --tag $CI_REGISTRY_IMAGE:$IMAGE_TAG
+      --tag ${CI_REGISTRY_IMAGE}:${IMAGE_TAG}
       --push .
 
 
