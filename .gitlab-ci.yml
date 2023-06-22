@@ -48,14 +48,14 @@ deploy:
   <<: *docker-job
   stage: deploy
   only:
-    - master
+    - tags
   variables:
     IMAGE-TAG: $CI_COMMIT_REF_NAME
 
 deploy-latest:
   <<: *docker-job
   stage: deploy
-  only:
-    - master
+  #  only:
+  #    - master
   variables:
     IMAGE-TAG: latest
