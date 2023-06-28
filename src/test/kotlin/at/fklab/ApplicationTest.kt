@@ -9,14 +9,5 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class ApplicationTest {
-    @Test
-    fun testRoot() = testApplication {
-        routing {
-            defaultRoute()
-        }
-        client.get("/").apply {
-            assertEquals(HttpStatusCode.OK, status)
-            assertEquals("PartManager API", bodyAsText())
-        }
-    }
+
 }

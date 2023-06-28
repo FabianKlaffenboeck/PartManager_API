@@ -9,7 +9,7 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 
 fun Route.ManufacturerRoute(manufacturerService: ManufacturerService) {
-    route("/manufacturer") {
+    route("/manufacturers") {
         get {
             call.respond(manufacturerService.getAll())
         }

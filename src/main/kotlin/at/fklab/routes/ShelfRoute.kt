@@ -9,7 +9,7 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 
 fun Route.ShelfRoute(shelfService: ShelfService) {
-    route("/shelf") {
+    route("/shelfs") {
         get {
             call.respond(shelfService.getAll())
         }

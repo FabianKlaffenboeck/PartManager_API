@@ -9,7 +9,7 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 
 fun Route.PartRoute(partService: PartService) {
-    route("/part") {
+    route("/parts") {
         get {
             call.respond(partService.getAll())
         }
