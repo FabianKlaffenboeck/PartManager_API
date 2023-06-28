@@ -9,7 +9,7 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 
 fun Route.UserRoute(userService: UserService) {
-    route("/user") {
+    route("/users") {
         get {
             call.respond(userService.getAll())
         }
