@@ -19,9 +19,7 @@ object PartTypes : IntIdTable("PartTypes") {
     val name = varchar("name", 100)
 
     val updatedAt = datetime("updatedAt").nullable()
-    val updatedBy = varchar("updatedBy", 100).nullable()
     val deletedAt = datetime("deletedAt").nullable()
-    val deletedBy = varchar("deletedBy", 100).nullable()
 }
 
 class PartTypeEntity(id: EntityID<Int>) : IntEntity(id) {
@@ -30,9 +28,7 @@ class PartTypeEntity(id: EntityID<Int>) : IntEntity(id) {
     var name by PartTypes.name
 
     var updatedAt by PartTypes.updatedAt
-    var updatedBy by PartTypes.updatedBy
     var deletedAt by PartTypes.deletedAt
-    var deletedBy by PartTypes.deletedBy
 
     fun toPartType() = PartType(
         id.value,

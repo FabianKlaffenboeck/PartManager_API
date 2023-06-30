@@ -22,27 +22,24 @@ class PartTypeService {
 
     fun getFootprints(): List<Footprint> = Footprint.values().asList()
 
-    fun add(partType: PartType, user: String): PartType = transaction {
+    fun add(partType: PartType): PartType = transaction {
         PartTypeEntity.new {
             name = partType.name
 
             updatedAt = LocalDateTime.now()
-            updatedBy = user
         }.toPartType()
     }
 
-    fun update(partType: PartType, user: String): PartType = transaction {
+    fun update(partType: PartType): PartType = transaction {
         val notNullId = partType.id ?: -1
 
         PartTypeEntity[notNullId].name = partType.name
 
         PartTypeEntity[notNullId].updatedAt = LocalDateTime.now()
-        PartTypeEntity[notNullId].updatedBy = user
         PartTypeEntity[notNullId].toPartType()
     }
 
-    fun delite(id: Int, user: String) = transaction {
+    fun delite(id: Int) = transaction {
         PartTypeEntity[id].deletedAt = LocalDateTime.now()
-        PartTypeEntity[id].deletedBy = user
     }
 }

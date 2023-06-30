@@ -22,14 +22,14 @@ fun Route.ShelfRoute(shelfService: ShelfService) {
             val shelf = call.receive<Shelf>()
             if (shelf.id == null) {
                 return@post call.respond(
-                    shelfService.add(shelf, "TBD")
+                    shelfService.add(shelf)
                 )
             }
-            call.respond(shelfService.update(shelf, "TBD"))
+            call.respond(shelfService.update(shelf))
         }
         delete("{id}") {
             val id: Int = (call.parameters["id"] ?: return@delete call.respond(HttpStatusCode.BadRequest)).toInt()
-            call.respond(shelfService.delite(id, "TBD"))
+            call.respond(shelfService.delite(id))
         }
         put {
             call.respond(HttpStatusCode.NotImplemented)

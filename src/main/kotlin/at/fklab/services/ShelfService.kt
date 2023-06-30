@@ -22,11 +22,11 @@ class ShelfService {
         }.firstOrNull()?.toShelf()
     }
 
-    fun add(shelf: Shelf, user: String): Shelf = transaction {
+    fun add(shelf: Shelf): Shelf = transaction {
 
-        for (i in 0..shelf.trays.size-1) {
+        for (i in 0..shelf.trays.size - 1) {
             if (TrayEntity.findById(shelf.trays[i].id ?: 0) == null) {
-                shelf.trays[i].id = TrayService().add(shelf.trays[i], user).id
+                shelf.trays[i].id = TrayService().add(shelf.trays[i]).id
             }
         }
 
@@ -37,11 +37,10 @@ class ShelfService {
             })
 
             updatedAt = LocalDateTime.now()
-            updatedBy = user
         }.toShelf()
     }
 
-    fun update(shelf: Shelf, user: String): Shelf = transaction {
+    fun update(shelf: Shelf): Shelf = transaction {
         val notNullId = shelf.id ?: -1
 
         ShelfEntity[notNullId].name = shelf.name
@@ -50,12 +49,10 @@ class ShelfService {
         })
 
         ShelfEntity[notNullId].updatedAt = LocalDateTime.now()
-        ShelfEntity[notNullId].updatedBy = user
         ShelfEntity[notNullId].toShelf()
     }
 
-    fun delite(id: Int, user: String) = transaction {
+    fun delite(id: Int) = transaction {
         ShelfEntity[id].deletedAt = LocalDateTime.now()
-        ShelfEntity[id].deletedBy = user
     }
 }

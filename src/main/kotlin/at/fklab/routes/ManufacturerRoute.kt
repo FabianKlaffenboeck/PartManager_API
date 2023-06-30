@@ -22,14 +22,14 @@ fun Route.ManufacturerRoute(manufacturerService: ManufacturerService) {
             val manufacturer = call.receive<Manufacturer>()
             if (manufacturer.id == null) {
                 return@post call.respond(
-                    manufacturerService.add(manufacturer, "TBD")
+                    manufacturerService.add(manufacturer)
                 )
             }
-            call.respond(manufacturerService.update(manufacturer, "TBD"))
+            call.respond(manufacturerService.update(manufacturer))
         }
         delete("{id}") {
             val id: Int = (call.parameters["id"] ?: return@delete call.respond(HttpStatusCode.BadRequest)).toInt()
-            call.respond(manufacturerService.delite(id, "TBD"))
+            call.respond(manufacturerService.delite(id))
         }
         put {
             call.respond(HttpStatusCode.NotImplemented)

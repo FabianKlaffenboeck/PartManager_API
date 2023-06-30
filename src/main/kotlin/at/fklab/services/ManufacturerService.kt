@@ -20,27 +20,24 @@ class ManufacturerService {
         }.firstOrNull()?.toManufacturer()
     }
 
-    fun add(manufacturer: Manufacturer, user: String): Manufacturer = transaction {
+    fun add(manufacturer: Manufacturer): Manufacturer = transaction {
         ManufacturerEntity.new {
             name = manufacturer.name
 
             updatedAt = LocalDateTime.now()
-            updatedBy = user
         }.toManufacturer()
     }
 
-    fun update(manufacturer: Manufacturer, user: String): Manufacturer = transaction {
+    fun update(manufacturer: Manufacturer): Manufacturer = transaction {
         val notNullId = manufacturer.id ?: -1
 
         ManufacturerEntity[notNullId].name = manufacturer.name
 
         ManufacturerEntity[notNullId].updatedAt = LocalDateTime.now()
-        ManufacturerEntity[notNullId].updatedBy = user
         ManufacturerEntity[notNullId].toManufacturer()
     }
 
-    fun delite(id: Int, user: String) = transaction {
+    fun delite(id: Int) = transaction {
         ManufacturerEntity[id].deletedAt = LocalDateTime.now()
-        ManufacturerEntity[id].deletedBy = user
     }
 }

@@ -18,48 +18,41 @@ fun Application.configureDatabases(dbUrl: String, dbUser: String, dbPW: String, 
 
         transaction {
             SchemaUtils.drop(
-                Users, Trays, Shelfs, ShelfTrays, PartTypes, Manufacturers, Parts
+                Trays, Shelfs, ShelfTrays, PartTypes, Manufacturers, Parts
             )
         }
         transaction {
             SchemaUtils.create(
-                Users, Trays, Shelfs, ShelfTrays, PartTypes, Manufacturers, Parts
+                Trays, Shelfs, ShelfTrays, PartTypes, Manufacturers, Parts
             )
         }
 
         if (populateDB) {
             transaction {
-                for (user in sampleUsers) {
-                    UserService().add(user, "TBD")
-                }
-            }
-
-            transaction {
                 for (tray in sampleTrays) {
-                    TrayService().add(tray, "TBD")
+                    TrayService().add(tray)
                 }
             }
             transaction {
                 for (shelf in sampleShelfs) {
-                    ShelfService().add(shelf, "TBD")
+                    ShelfService().add(shelf)
                 }
             }
             transaction {
                 for (manufacturer in sampleManufacturers) {
-                    ManufacturerService().add(manufacturer, "TBD")
+                    ManufacturerService().add(manufacturer)
                 }
             }
             transaction {
                 for (partType in samplePartTypes) {
-                    PartTypeService().add(partType, "TBD")
+                    PartTypeService().add(partType)
                 }
             }
             transaction {
                 for (part in sampleParts) {
-                    PartService().add(part, "TBD")
+                    PartService().add(part)
                 }
             }
         }
-
     }
 }

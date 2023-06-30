@@ -20,9 +20,7 @@ object Parts : IntIdTable("Parts") {
     val tray_id = reference("tray_id", Trays)
 
     val updatedAt = datetime("updatedAt").nullable()
-    val updatedBy = varchar("updatedBy", 100).nullable()
     val deletedAt = datetime("deletedAt").nullable()
-    val deletedBy = varchar("deletedBy", 100).nullable()
 }
 
 class PartEntity(id: EntityID<Int>) : IntEntity(id) {
@@ -39,9 +37,7 @@ class PartEntity(id: EntityID<Int>) : IntEntity(id) {
     var tray by TrayEntity referencedOn Parts.tray_id
 
     var updatedAt by Parts.updatedAt
-    var updatedBy by Parts.updatedBy
     var deletedAt by Parts.deletedAt
-    var deletedBy by Parts.deletedBy
 
     fun toPart() = Part(
         id.value,
