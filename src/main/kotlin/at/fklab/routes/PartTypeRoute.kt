@@ -22,14 +22,14 @@ fun Route.PartTypeRoute(partTypeService: PartTypeService) {
             val partType = call.receive<PartType>()
             if (partType.id == null) {
                 return@post call.respond(
-                    partTypeService.add(partType, "TBD")
+                    partTypeService.add(partType)
                 )
             }
-            call.respond(partTypeService.update(partType, "TBD"))
+            call.respond(partTypeService.update(partType))
         }
         delete("{id}") {
             val id: Int = (call.parameters["id"] ?: return@delete call.respond(HttpStatusCode.BadRequest)).toInt()
-            call.respond(partTypeService.delite(id, "TBD"))
+            call.respond(partTypeService.delite(id))
         }
         put {
             call.respond(HttpStatusCode.NotImplemented)

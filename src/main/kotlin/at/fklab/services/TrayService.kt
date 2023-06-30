@@ -20,27 +20,24 @@ class TrayService {
         }.firstOrNull()?.toTray()
     }
 
-    fun add(tray: Tray, user: String): Tray = transaction {
+    fun add(tray: Tray): Tray = transaction {
         TrayEntity.new {
             name = tray.name
 
             updatedAt = LocalDateTime.now()
-            updatedBy = user
         }.toTray()
     }
 
-    fun update(tray: Tray, user: String): Tray = transaction {
+    fun update(tray: Tray): Tray = transaction {
         val notNullId = tray.id ?: -1
 
         TrayEntity[notNullId].name = tray.name
 
         TrayEntity[notNullId].updatedAt = LocalDateTime.now()
-        TrayEntity[notNullId].updatedBy = user
         TrayEntity[notNullId].toTray()
     }
 
-    fun delite(id: Int, user: String) = transaction {
+    fun delite(id: Int) = transaction {
         TrayEntity[id].deletedAt = LocalDateTime.now()
-        TrayEntity[id].deletedBy = user
     }
 }

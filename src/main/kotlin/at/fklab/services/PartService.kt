@@ -18,7 +18,7 @@ class PartService {
         }.firstOrNull()?.toPart()
     }
 
-    fun add(part: Part, user: String): Part = transaction {
+    fun add(part: Part): Part = transaction {
         PartEntity.new {
             name = part.name
             quantity = part.quantity
@@ -30,12 +30,11 @@ class PartService {
             tray = part.tray.id?.let { TrayEntity.findById(it) }!!
 
             updatedAt = LocalDateTime.now()
-            updatedBy = user
         }.toPart()
     }
 
 
-    fun update(part: Part, user: String): Part = transaction {
+    fun update(part: Part): Part = transaction {
         val notNullId = part.id ?: -1
 
         PartEntity[notNullId].name = part.name
@@ -48,12 +47,10 @@ class PartService {
         PartEntity[notNullId].tray = part.tray.id?.let { TrayEntity.findById(it) }!!
 
         PartEntity[notNullId].updatedAt = LocalDateTime.now()
-        PartEntity[notNullId].updatedBy = user
         PartEntity[notNullId].toPart()
     }
 
-    fun delite(id: Int, user: String) = transaction {
+    fun delite(id: Int) = transaction {
         PartEntity[id].deletedAt = LocalDateTime.now()
-        PartEntity[id].deletedBy = user
     }
 }

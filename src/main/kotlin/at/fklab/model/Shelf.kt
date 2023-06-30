@@ -12,9 +12,7 @@ object Shelfs : IntIdTable("Shelfs") {
     val name = varchar("name", 100)
 
     val updatedAt = datetime("updatedAt").nullable()
-    val updatedBy = varchar("updatedBy",100).nullable()
     val deletedAt = datetime("deletedAt").nullable()
-    val deletedBy = varchar("deletedBy",100).nullable()
 }
 
 object ShelfTrays : Table("shelf_trays") {
@@ -33,9 +31,7 @@ class ShelfEntity(id: EntityID<Int>) : IntEntity(id) {
     var trays by TrayEntity via ShelfTrays
 
     var updatedAt by Shelfs.updatedAt
-    var updatedBy by Shelfs.updatedBy
     var deletedAt by Shelfs.deletedAt
-    var deletedBy by Shelfs.deletedBy
 
     fun toShelf() = Shelf(
         id.value,

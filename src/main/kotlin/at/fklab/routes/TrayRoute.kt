@@ -22,14 +22,14 @@ fun Route.TrayRoute(trayService: TrayService) {
             val tray = call.receive<Tray>()
             if (tray.id == null) {
                 return@post call.respond(
-                    trayService.add(tray, "TBD")
+                    trayService.add(tray)
                 )
             }
-            call.respond(trayService.update(tray, "TBD"))
+            call.respond(trayService.update(tray))
         }
         delete("{id}") {
             val id: Int = (call.parameters["id"] ?: return@delete call.respond(HttpStatusCode.BadRequest)).toInt()
-            call.respond(trayService.delite(id, "TBD"))
+            call.respond(trayService.delite(id))
         }
         put {
             call.respond(HttpStatusCode.NotImplemented)

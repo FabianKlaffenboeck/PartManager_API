@@ -37,7 +37,6 @@ fun Application.module() {
             PartTypeRoute(PartTypeService())
             ShelfRoute(ShelfService())
             TrayRoute(TrayService())
-            UserRoute(UserService())
         }
     }
 }
