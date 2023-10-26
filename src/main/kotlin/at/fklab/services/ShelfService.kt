@@ -52,7 +52,7 @@ class ShelfService {
         ShelfEntity[notNullId].toShelf()
     }
 
-    fun delite(id: Int) = transaction {
+    fun delete(id: Int) = transaction {
         ShelfEntity[id].deletedAt = LocalDateTime.now()
     }
 }

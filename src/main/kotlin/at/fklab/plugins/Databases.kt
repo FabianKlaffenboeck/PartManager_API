@@ -18,16 +18,26 @@ fun Application.configureDatabases(dbUrl: String, dbUser: String, dbPW: String, 
 
         transaction {
             SchemaUtils.drop(
-                Trays, Shelfs, ShelfTrays, PartTypes, Manufacturers, Parts
+                Footprints, MeasurementUnits, Trays, Shelfs, ShelfTrays, PartTypes, Manufacturers, Parts
             )
         }
         transaction {
             SchemaUtils.create(
-                Trays, Shelfs, ShelfTrays, PartTypes, Manufacturers, Parts
+                Footprints, MeasurementUnits, Trays, Shelfs, ShelfTrays, PartTypes, Manufacturers, Parts
             )
         }
 
         if (populateDB) {
+            transaction {
+                for (footprint in sampleFootprints) {
+                    FootprintService().add(footprint)
+                }
+            }
+            transaction {
+                for (measurementUnit in sampleMeasurementUnits) {
+                    MeasurementUnitService().add(measurementUnit)
+                }
+            }
             transaction {
                 for (tray in sampleTrays) {
                     TrayService().add(tray)

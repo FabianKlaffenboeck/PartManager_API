@@ -37,7 +37,7 @@ class TrayService {
         TrayEntity[notNullId].toTray()
     }
 
-    fun delite(id: Int) = transaction {
+    fun delete(id: Int) = transaction {
         TrayEntity[id].deletedAt = LocalDateTime.now()
     }
 }

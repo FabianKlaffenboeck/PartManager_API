@@ -11,10 +11,10 @@ object Parts : IntIdTable("Parts") {
 
     val name = varchar("name", 100)
     val quantity = integer("quantity")
-    val measurementUnit = enumeration("measurementUnit", MeasurementUnit::class).nullable()
     val value = double("value").nullable()
-    val footprint = enumeration("footprint", Footprint::class).nullable()
 
+    val measurementUnit_id = reference("measurementUnit_id", MeasurementUnits).nullable()
+    val footprint_id = reference("footprint_id", Footprints).nullable()
     val partType_id = reference("partType_id", PartTypes)
     val manufacturer_id = reference("manufacturer_id", Manufacturers)
     val tray_id = reference("tray_id", Trays)
@@ -28,10 +28,10 @@ class PartEntity(id: EntityID<Int>) : IntEntity(id) {
 
     var name by Parts.name
     var quantity by Parts.quantity
-    var measurementUnit by Parts.measurementUnit
     var value by Parts.value
-    var footprint by Parts.footprint
 
+    var measurementUnit by MeasurementUnitEntity optionalReferencedOn Parts.measurementUnit_id
+    var footprint by FootprintEntity optionalReferencedOn Parts.footprint_id
     var partType by PartTypeEntity referencedOn Parts.partType_id
     var manufacturer by ManufacturerEntity referencedOn Parts.manufacturer_id
     var tray by TrayEntity referencedOn Parts.tray_id
@@ -43,9 +43,9 @@ class PartEntity(id: EntityID<Int>) : IntEntity(id) {
         id.value,
         name,
         quantity,
-        measurementUnit,
         value,
-        footprint,
+        measurementUnit?.toMeasurementUnit(),
+        footprint?.toFootprint(),
         partType.toPartType(),
         manufacturer.toManufacturer(),
         tray.toTray(),
@@ -56,8 +56,8 @@ class Part(
     var id: Int?,
     var name: String,
     var quantity: Int,
-    var measurementUnit: MeasurementUnit?,
     var value: Double?,
+    var measurementUnit: MeasurementUnit?,
     var footprint: Footprint?,
     var partType: PartType,
     var manufacturer: Manufacturer,

@@ -8,7 +8,7 @@ import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 
-fun Route.PartRoute(partService: PartService) {
+fun Route.partRoute(partService: PartService) {
     route("/parts") {
         get {
             call.respond(partService.getAll())
@@ -27,12 +27,12 @@ fun Route.PartRoute(partService: PartService) {
             }
             call.respond(partService.update(part))
         }
-        delete("{id}") {
-            val id: Int = (call.parameters["id"] ?: return@delete call.respond(HttpStatusCode.BadRequest)).toInt()
-            call.respond(partService.delite(id))
-        }
         put {
             call.respond(HttpStatusCode.NotImplemented)
+        }
+        delete("{id}") {
+            val id: Int = (call.parameters["id"] ?: return@delete call.respond(HttpStatusCode.BadRequest)).toInt()
+            call.respond(partService.delete(id))
         }
     }
 }

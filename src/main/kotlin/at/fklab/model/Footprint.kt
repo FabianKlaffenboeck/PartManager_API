@@ -7,28 +7,27 @@ import org.jetbrains.exposed.dao.id.IntIdTable
 import org.jetbrains.exposed.sql.javatime.datetime
 
 
-object PartTypes : IntIdTable("PartTypes") {
+object Footprints : IntIdTable("Footprints") {
     val name = varchar("name", 100)
 
     val updatedAt = datetime("updatedAt").nullable()
     val deletedAt = datetime("deletedAt").nullable()
 }
 
-class PartTypeEntity(id: EntityID<Int>) : IntEntity(id) {
-    companion object : IntEntityClass<PartTypeEntity>(PartTypes)
+class FootprintEntity(id: EntityID<Int>) : IntEntity(id) {
+    companion object : IntEntityClass<FootprintEntity>(Footprints)
 
-    var name by PartTypes.name
+    var name by Footprints.name
 
-    var updatedAt by PartTypes.updatedAt
-    var deletedAt by PartTypes.deletedAt
+    var updatedAt by Footprints.updatedAt
+    var deletedAt by Footprints.deletedAt
 
-    fun toPartType() = PartType(
-        id.value,
-        name,
+    fun toFootprint() = Footprint(
+        id.value, name
     )
 }
 
-class PartType(
+class Footprint(
     var id: Int?,
-    var name: String,
+    var name: String
 )

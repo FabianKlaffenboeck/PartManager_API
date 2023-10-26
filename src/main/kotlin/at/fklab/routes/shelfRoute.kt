@@ -8,7 +8,7 @@ import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 
-fun Route.ShelfRoute(shelfService: ShelfService) {
+fun Route.shelfRoute(shelfService: ShelfService) {
     route("/shelfs") {
         get {
             call.respond(shelfService.getAll())
@@ -27,12 +27,12 @@ fun Route.ShelfRoute(shelfService: ShelfService) {
             }
             call.respond(shelfService.update(shelf))
         }
-        delete("{id}") {
-            val id: Int = (call.parameters["id"] ?: return@delete call.respond(HttpStatusCode.BadRequest)).toInt()
-            call.respond(shelfService.delite(id))
-        }
         put {
             call.respond(HttpStatusCode.NotImplemented)
+        }
+        delete("{id}") {
+            val id: Int = (call.parameters["id"] ?: return@delete call.respond(HttpStatusCode.BadRequest)).toInt()
+            call.respond(shelfService.delete(id))
         }
     }
 }
