@@ -8,7 +8,7 @@ import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 
-fun Route.TrayRoute(trayService: TrayService) {
+fun Route.trayRoute(trayService: TrayService) {
     route("/trays") {
         get {
             call.respond(trayService.getAll())
@@ -27,12 +27,12 @@ fun Route.TrayRoute(trayService: TrayService) {
             }
             call.respond(trayService.update(tray))
         }
-        delete("{id}") {
-            val id: Int = (call.parameters["id"] ?: return@delete call.respond(HttpStatusCode.BadRequest)).toInt()
-            call.respond(trayService.delite(id))
-        }
         put {
             call.respond(HttpStatusCode.NotImplemented)
+        }
+        delete("{id}") {
+            val id: Int = (call.parameters["id"] ?: return@delete call.respond(HttpStatusCode.BadRequest)).toInt()
+            call.respond(trayService.delete(id))
         }
     }
 }

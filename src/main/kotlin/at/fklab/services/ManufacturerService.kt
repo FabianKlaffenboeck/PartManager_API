@@ -37,7 +37,7 @@ class ManufacturerService {
         ManufacturerEntity[notNullId].toManufacturer()
     }
 
-    fun delite(id: Int) = transaction {
+    fun delete(id: Int) = transaction {
         ManufacturerEntity[id].deletedAt = LocalDateTime.now()
     }
 }

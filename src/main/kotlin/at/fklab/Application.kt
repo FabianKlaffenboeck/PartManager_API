@@ -32,13 +32,13 @@ fun Application.module() {
 
     routing {
         route("/api") {
-            ManufacturerRoute(ManufacturerService())
-            PartRoute(PartService())
-            PartTypeRoute(PartTypeService())
-            ShelfRoute(ShelfService())
-            TrayRoute(TrayService())
-            FootprintRoute()
-            MeasurementUnitRoute()
+            manufacturerRoute(ManufacturerService())
+            partRoute(PartService())
+            partTypeRoute(PartTypeService())
+            shelfRoute(ShelfService())
+            trayRoute(TrayService())
+            footprintRoute(FootprintService())
+            measurementUnitRoute(MeasurementUnitService())
         }
     }
 }

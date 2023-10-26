@@ -22,9 +22,9 @@ class PartService {
         PartEntity.new {
             name = part.name
             quantity = part.quantity
-            measurementUnit = part.measurementUnit
             value = part.value
-            footprint = part.footprint
+            measurementUnit = part.measurementUnit?.id?.let { MeasurementUnitEntity.findById(it) }
+            footprint = part.footprint?.id?.let { FootprintEntity.findById(it) }
             partType = part.partType.id?.let { PartTypeEntity.findById(it) }!!
             manufacturer = part.manufacturer.id?.let { ManufacturerEntity.findById(it) }!!
             tray = part.tray.id?.let { TrayEntity.findById(it) }!!
@@ -39,9 +39,9 @@ class PartService {
 
         PartEntity[notNullId].name = part.name
         PartEntity[notNullId].quantity = part.quantity
-        PartEntity[notNullId].measurementUnit = part.measurementUnit
         PartEntity[notNullId].value = part.value
-        PartEntity[notNullId].footprint = part.footprint
+        PartEntity[notNullId].measurementUnit = part.measurementUnit?.id?.let { MeasurementUnitEntity.findById(it) }
+        PartEntity[notNullId].footprint = part.footprint?.id?.let { FootprintEntity.findById(it) }
         PartEntity[notNullId].partType = part.partType.id?.let { PartTypeEntity.findById(it) }!!
         PartEntity[notNullId].manufacturer = part.manufacturer.id?.let { ManufacturerEntity.findById(it) }!!
         PartEntity[notNullId].tray = part.tray.id?.let { TrayEntity.findById(it) }!!
@@ -50,7 +50,7 @@ class PartService {
         PartEntity[notNullId].toPart()
     }
 
-    fun delite(id: Int) = transaction {
+    fun delete(id: Int) = transaction {
         PartEntity[id].deletedAt = LocalDateTime.now()
     }
 }

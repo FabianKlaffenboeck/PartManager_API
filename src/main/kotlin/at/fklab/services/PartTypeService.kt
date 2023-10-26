@@ -18,10 +18,6 @@ class PartTypeService {
         }.firstOrNull()?.toPartType()
     }
 
-    fun getUnits(): List<MeasurementUnit> = MeasurementUnit.values().asList()
-
-    fun getFootprints(): List<Footprint> = Footprint.values().asList()
-
     fun add(partType: PartType): PartType = transaction {
         PartTypeEntity.new {
             name = partType.name
@@ -39,7 +35,7 @@ class PartTypeService {
         PartTypeEntity[notNullId].toPartType()
     }
 
-    fun delite(id: Int) = transaction {
+    fun delete(id: Int) = transaction {
         PartTypeEntity[id].deletedAt = LocalDateTime.now()
     }
 }
