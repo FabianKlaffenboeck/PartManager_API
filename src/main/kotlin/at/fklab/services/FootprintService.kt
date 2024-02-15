@@ -7,10 +7,9 @@ import java.time.LocalDateTime
 
 class FootprintService {
 
-    fun getAll(): List<String> = transaction {
+    fun getAll(): List<Footprint> = transaction {
         val query = Op.build { Footprints.deletedAt.isNull() }
         FootprintEntity.find(query).map(FootprintEntity::toFootprint)
-            .map { return@map it.name }// FIXME This is just a temporary fix to make it backwards compatible with the frontend
     }
 
     fun getById(id: Int): Footprint? = transaction {

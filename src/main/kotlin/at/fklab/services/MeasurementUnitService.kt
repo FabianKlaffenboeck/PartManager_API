@@ -9,10 +9,9 @@ import java.time.LocalDateTime
 
 class MeasurementUnitService {
 
-    fun getAll(): List<String> = transaction {
+    fun getAll(): List<MeasurementUnit> = transaction {
         val query = Op.build { MeasurementUnits.deletedAt.isNull() }
         MeasurementUnitEntity.find(query).map(MeasurementUnitEntity::toMeasurementUnit)
-            .map { return@map it.name }// FIXME This is just a temporary fix to make it backwards compatible with the frontend
     }
 
     fun getById(id: Int): MeasurementUnit? = transaction {
