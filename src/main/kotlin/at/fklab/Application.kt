@@ -12,21 +12,22 @@ import io.ktor.server.routing.*
 
 fun main() {
     embeddedServer(
-        Netty,
-        port = 8080,
-        module = Application::module
-        ).start(wait = true)
+        Netty, port = 8080, module = Application::module
+    ).start(wait = true)
 }
 
 fun Application.module() {
 
     val dbUrl: String = System.getenv("DBURL") ?: "jdbc:sqlite:TestDB"
+
     val dbUser: String = System.getenv("DBUSER") ?: "root"
     val dbPW: String = System.getenv("DBPW") ?: ""
-    val initDB: Boolean = System.getenv("INITDB").toBoolean()
-    val populateDB: Boolean = System.getenv("POPULATEDB").toBoolean()
 
-    configureDatabases(dbUrl, dbUser, dbPW, initDB, populateDB)
+    val initDB: Boolean = System.getenv("INITDB").toBoolean()
+    val populateDB: Boolean = System.getenv("POPULTEDB").toBoolean()
+    val updateSchema: Boolean = System.getenv("UPDATESCHEMA").toBoolean()
+
+    configureDatabases(dbUrl, dbUser, dbPW, updateSchema, initDB, populateDB)
     configureHTTP()
     configureSerialization()
 
