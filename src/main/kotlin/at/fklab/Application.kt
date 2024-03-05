@@ -8,6 +8,7 @@ import at.fklab.services.*
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
+import io.ktor.server.plugins.swagger.*
 import io.ktor.server.routing.*
 
 fun main() {
@@ -32,6 +33,8 @@ fun Application.module() {
     configureSerialization()
 
     routing {
+        swaggerUI(path = "swagger", swaggerFile = "openapi/documentation.yaml")
+
         route("/api") {
             manufacturerRoute(ManufacturerService())
             partRoute(PartService())
