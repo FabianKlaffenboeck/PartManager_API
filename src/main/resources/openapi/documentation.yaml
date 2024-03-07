@@ -4,7 +4,8 @@ info:
   description: "PartManager API"
   version: "1.0.0"
 servers:
-  - url: "https://localhost:8080"
+- url: "http://localhost:8080"
+- url: "https://part01.klaffenboeck.eu/api"
 paths:
   /api/footprints:
     get:
@@ -18,61 +19,70 @@ paths:
                 type: "array"
                 items:
                   $ref: "#/components/schemas/Footprint"
-        "501":
-          description: "Not Implemented"
-          content:
-            '*/*':
-              schema:
-                type: "object"
     post:
       description: ""
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: "#/components/schemas/Footprint"
+        required: true
       responses:
-        "501":
-          description: "Not Implemented"
+        "200":
+          description: "OK"
           content:
             '*/*':
               schema:
-                type: "object"
-    put:
-      description: ""
-      responses:
-        "501":
-          description: "Not Implemented"
-          content:
-            '*/*':
-              schema:
-                type: "object"
+                $ref: "#/components/schemas/Footprint"
   /api/footprints/{id}:
     delete:
       description: ""
       parameters:
-        - name: "id"
-          in: "path"
-          required: true
-          schema:
-            type: "string"
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
       responses:
-        "501":
-          description: "Not Implemented"
+        "400":
+          description: "Bad Request"
           content:
             '*/*':
               schema:
                 type: "object"
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Unit"
     get:
       description: ""
       parameters:
-        - name: "id"
-          in: "path"
-          required: true
-          schema:
-            type: "string"
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
       responses:
-        "501":
-          description: "Not Implemented"
+        "400":
+          description: "Bad Request"
           content:
             '*/*':
               schema:
                 type: "object"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                type: "object"
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Footprint"
   /api/manufacturers:
     get:
       description: ""
@@ -100,24 +110,15 @@ paths:
             '*/*':
               schema:
                 $ref: "#/components/schemas/Manufacturer"
-    put:
-      description: ""
-      responses:
-        "501":
-          description: "Not Implemented"
-          content:
-            '*/*':
-              schema:
-                type: "object"
   /api/manufacturers/{id}:
     delete:
       description: ""
       parameters:
-        - name: "id"
-          in: "path"
-          required: true
-          schema:
-            type: "string"
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
       responses:
         "400":
           description: "Bad Request"
@@ -134,11 +135,11 @@ paths:
     get:
       description: ""
       parameters:
-        - name: "id"
-          in: "path"
-          required: true
-          schema:
-            type: "string"
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
       responses:
         "400":
           description: "Bad Request"
@@ -172,53 +173,68 @@ paths:
                   $ref: "#/components/schemas/MeasurementUnit"
     post:
       description: ""
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: "#/components/schemas/MeasurementUnit"
+        required: true
       responses:
-        "501":
-          description: "Not Implemented"
+        "200":
+          description: "OK"
           content:
             '*/*':
               schema:
-                type: "object"
-    put:
-      description: ""
-      responses:
-        "501":
-          description: "Not Implemented"
-          content:
-            '*/*':
-              schema:
-                type: "object"
+                $ref: "#/components/schemas/MeasurementUnit"
   /api/measurementUnits/{id}:
     delete:
       description: ""
       parameters:
-        - name: "id"
-          in: "path"
-          required: true
-          schema:
-            type: "string"
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
       responses:
-        "501":
-          description: "Not Implemented"
+        "400":
+          description: "Bad Request"
           content:
             '*/*':
               schema:
                 type: "object"
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Unit"
     get:
       description: ""
       parameters:
-        - name: "id"
-          in: "path"
-          required: true
-          schema:
-            type: "string"
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
       responses:
-        "501":
-          description: "Not Implemented"
+        "400":
+          description: "Bad Request"
           content:
             '*/*':
               schema:
                 type: "object"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                type: "object"
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MeasurementUnit"
   /api/partTypes:
     get:
       description: ""
@@ -246,24 +262,15 @@ paths:
             '*/*':
               schema:
                 $ref: "#/components/schemas/PartType"
-    put:
-      description: ""
-      responses:
-        "501":
-          description: "Not Implemented"
-          content:
-            '*/*':
-              schema:
-                type: "object"
   /api/partTypes/{id}:
     delete:
       description: ""
       parameters:
-        - name: "id"
-          in: "path"
-          required: true
-          schema:
-            type: "string"
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
       responses:
         "400":
           description: "Bad Request"
@@ -280,11 +287,11 @@ paths:
     get:
       description: ""
       parameters:
-        - name: "id"
-          in: "path"
-          required: true
-          schema:
-            type: "string"
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
       responses:
         "400":
           description: "Bad Request"
@@ -331,24 +338,15 @@ paths:
             '*/*':
               schema:
                 $ref: "#/components/schemas/Part"
-    put:
-      description: ""
-      responses:
-        "501":
-          description: "Not Implemented"
-          content:
-            '*/*':
-              schema:
-                type: "object"
   /api/parts/{id}:
     delete:
       description: ""
       parameters:
-        - name: "id"
-          in: "path"
-          required: true
-          schema:
-            type: "string"
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
       responses:
         "400":
           description: "Bad Request"
@@ -365,11 +363,11 @@ paths:
     get:
       description: ""
       parameters:
-        - name: "id"
-          in: "path"
-          required: true
-          schema:
-            type: "string"
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
       responses:
         "400":
           description: "Bad Request"
@@ -416,24 +414,15 @@ paths:
             '*/*':
               schema:
                 $ref: "#/components/schemas/Shelf"
-    put:
-      description: ""
-      responses:
-        "501":
-          description: "Not Implemented"
-          content:
-            '*/*':
-              schema:
-                type: "object"
   /api/shelfs/{id}:
     delete:
       description: ""
       parameters:
-        - name: "id"
-          in: "path"
-          required: true
-          schema:
-            type: "string"
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
       responses:
         "400":
           description: "Bad Request"
@@ -450,11 +439,11 @@ paths:
     get:
       description: ""
       parameters:
-        - name: "id"
-          in: "path"
-          required: true
-          schema:
-            type: "string"
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
       responses:
         "400":
           description: "Bad Request"
@@ -501,24 +490,15 @@ paths:
             '*/*':
               schema:
                 $ref: "#/components/schemas/Tray"
-    put:
-      description: ""
-      responses:
-        "501":
-          description: "Not Implemented"
-          content:
-            '*/*':
-              schema:
-                type: "object"
   /api/trays/{id}:
     delete:
       description: ""
       parameters:
-        - name: "id"
-          in: "path"
-          required: true
-          schema:
-            type: "string"
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
       responses:
         "400":
           description: "Bad Request"
@@ -535,11 +515,11 @@ paths:
     get:
       description: ""
       parameters:
-        - name: "id"
-          in: "path"
-          required: true
-          schema:
-            type: "string"
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
       responses:
         "400":
           description: "Bad Request"
@@ -570,7 +550,10 @@ components:
         name:
           type: "string"
       required:
-        - "name"
+      - "name"
+    Unit:
+      type: "object"
+      properties: {}
     Manufacturer:
       type: "object"
       properties:
@@ -580,10 +563,7 @@ components:
         name:
           type: "string"
       required:
-        - "name"
-    Unit:
-      type: "object"
-      properties: { }
+      - "name"
     MeasurementUnit:
       type: "object"
       properties:
@@ -593,7 +573,7 @@ components:
         name:
           type: "string"
       required:
-        - "name"
+      - "name"
     PartType:
       type: "object"
       properties:
@@ -603,7 +583,7 @@ components:
         name:
           type: "string"
       required:
-        - "name"
+      - "name"
     Tray:
       type: "object"
       properties:
@@ -613,7 +593,7 @@ components:
         name:
           type: "string"
       required:
-        - "name"
+      - "name"
     Part:
       type: "object"
       properties:
@@ -639,10 +619,10 @@ components:
         tray:
           $ref: "#/components/schemas/Tray"
       required:
-        - "name"
-        - "partType"
-        - "manufacturer"
-        - "tray"
+      - "name"
+      - "partType"
+      - "manufacturer"
+      - "tray"
     Shelf:
       type: "object"
       properties:
@@ -656,5 +636,5 @@ components:
           items:
             $ref: "#/components/schemas/Tray"
       required:
-        - "name"
-        - "trays"
+      - "name"
+      - "trays"

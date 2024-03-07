@@ -1,8 +1,10 @@
 package at.fklab.routes
 
+import at.fklab.model.Footprint
 import at.fklab.services.FootprintService
 import io.ktor.http.*
 import io.ktor.server.application.*
+import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 
@@ -10,19 +12,24 @@ fun Route.footprintRoute(footprintService: FootprintService) {
     route("/footprints") {
         get {
             call.respond(footprintService.getAll())
-            call.respond(HttpStatusCode.NotImplemented)
         }
         get("{id}") {
-            call.respond(HttpStatusCode.NotImplemented)
+            val id: Int = (call.parameters["id"] ?: return@get call.respond(HttpStatusCode.BadRequest)).toInt()
+            val footprint = footprintService.getById(id) ?: return@get call.respond(HttpStatusCode.NotFound)
+            call.respond(footprint)
         }
         post {
-            call.respond(HttpStatusCode.NotImplemented)
-        }
-        put {
-            call.respond(HttpStatusCode.NotImplemented)
+            val footprint = call.receive<Footprint>()
+            if (footprint.id == null) {
+                return@post call.respond(
+                    footprintService.add(footprint)
+                )
+            }
+            call.respond(footprintService.update(footprint))
         }
         delete("{id}") {
-            call.respond(HttpStatusCode.NotImplemented)
+            val id: Int = (call.parameters["id"] ?: return@delete call.respond(HttpStatusCode.BadRequest)).toInt()
+            call.respond(footprintService.delete(id))
         }
     }
 }
