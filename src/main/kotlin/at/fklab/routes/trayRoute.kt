@@ -27,9 +27,6 @@ fun Route.trayRoute(trayService: TrayService) {
             }
             call.respond(trayService.update(tray))
         }
-        put {
-            call.respond(HttpStatusCode.NotImplemented)
-        }
         delete("{id}") {
             val id: Int = (call.parameters["id"] ?: return@delete call.respond(HttpStatusCode.BadRequest)).toInt()
             call.respond(trayService.delete(id))

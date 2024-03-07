@@ -27,9 +27,6 @@ fun Route.shelfRoute(shelfService: ShelfService) {
             }
             call.respond(shelfService.update(shelf))
         }
-        put {
-            call.respond(HttpStatusCode.NotImplemented)
-        }
         delete("{id}") {
             val id: Int = (call.parameters["id"] ?: return@delete call.respond(HttpStatusCode.BadRequest)).toInt()
             call.respond(shelfService.delete(id))

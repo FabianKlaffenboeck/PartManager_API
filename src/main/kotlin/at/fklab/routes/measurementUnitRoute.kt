@@ -14,16 +14,22 @@ fun Route.measurementUnitRoute(measurementUnitService: MeasurementUnitService) {
             call.respond(measurementUnitService.getAll())
         }
         get("{id}") {
-            call.respond(HttpStatusCode.NotImplemented)
+            val id: Int = (call.parameters["id"] ?: return@get call.respond(HttpStatusCode.BadRequest)).toInt()
+            val measurementUnit = measurementUnitService.getById(id) ?: return@get call.respond(HttpStatusCode.NotFound)
+            call.respond(measurementUnit)
         }
         post {
-            call.respond(HttpStatusCode.NotImplemented)
-        }
-        put {
-            call.respond(HttpStatusCode.NotImplemented)
+            val measurementUnit = call.receive<MeasurementUnit>()
+            if (measurementUnit.id == null) {
+                return@post call.respond(
+                    measurementUnitService.add(measurementUnit)
+                )
+            }
+            call.respond(measurementUnitService.update(measurementUnit))
         }
         delete("{id}") {
-            call.respond(HttpStatusCode.NotImplemented)
+            val id: Int = (call.parameters["id"] ?: return@delete call.respond(HttpStatusCode.BadRequest)).toInt()
+            call.respond(measurementUnitService.delete(id))
         }
     }
 }

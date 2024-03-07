@@ -27,9 +27,6 @@ fun Route.manufacturerRoute(manufacturerService: ManufacturerService) {
             }
             call.respond(manufacturerService.update(manufacturer))
         }
-        put {
-            call.respond(HttpStatusCode.NotImplemented)
-        }
         delete("{id}") {
             val id: Int = (call.parameters["id"] ?: return@delete call.respond(HttpStatusCode.BadRequest)).toInt()
             call.respond(manufacturerService.delete(id))

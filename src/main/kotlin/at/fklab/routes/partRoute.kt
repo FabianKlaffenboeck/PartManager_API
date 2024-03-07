@@ -27,9 +27,6 @@ fun Route.partRoute(partService: PartService) {
             }
             call.respond(partService.update(part))
         }
-        put {
-            call.respond(HttpStatusCode.NotImplemented)
-        }
         delete("{id}") {
             val id: Int = (call.parameters["id"] ?: return@delete call.respond(HttpStatusCode.BadRequest)).toInt()
             call.respond(partService.delete(id))
