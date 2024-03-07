@@ -33,9 +33,8 @@ fun Application.module() {
     configureSerialization()
 
     routing {
-        swaggerUI(path = "swagger", swaggerFile = "openapi/documentation.yaml")
-
         route("/api") {
+            swaggerUI(path = "swagger", swaggerFile = "openapi/documentation.yaml")
             manufacturerRoute(ManufacturerService())
             partRoute(PartService())
             partTypeRoute(PartTypeService())
