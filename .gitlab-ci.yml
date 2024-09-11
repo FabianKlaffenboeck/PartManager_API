@@ -1,3 +1,6 @@
+variables:
+  GRADLE_VERSION: "gradle:7.5-jdk18"
+
 include:
-  project: 'FabianKla/cicd_dry_templates'
-  file: 'complete/kotlin/Kotlin_Build_Gradle7_5_jdk18.yml'
+  project: 'FKLab/cicd_dry_templates'
+  file: 'templates/kotlin_pipeline.yml'
