@@ -31,4 +31,5 @@ class PartTypeEntity(id: EntityID<Int>) : IntEntity(id) {
 class PartType(
     var id: Int?,
     var name: String,
+    // todo default unit
 )

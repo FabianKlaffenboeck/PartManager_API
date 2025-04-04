@@ -41,7 +41,7 @@ fun Application.module() {
             shelfRoute(ShelfService())
             trayRoute(TrayService())
             footprintRoute(FootprintService())
-            measurementUnitRoute(MeasurementUnitService())
+            electricalUnitRoute(ElectricalUnitService())
         }
     }
 }

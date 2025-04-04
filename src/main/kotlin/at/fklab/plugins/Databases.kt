@@ -8,7 +8,7 @@ import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.transactions.transaction
 
-val tables = listOf(Footprints, MeasurementUnits, Trays, Shelfs, ShelfTrays, PartTypes, Manufacturers, Parts)
+val tables = listOf(Footprints, Trays, Shelfs, ShelfTrays, PartTypes, Manufacturers, Parts)
 
 fun Application.configureDatabases(
     dbUrl: String,
@@ -59,11 +59,6 @@ fun populateDB() {
     transaction {
         for (footprint in sampleFootprints) {
             FootprintService().add(footprint)
-        }
-    }
-    transaction {
-        for (measurementUnit in sampleMeasurementUnits) {
-            MeasurementUnitService().add(measurementUnit)
         }
     }
     transaction {

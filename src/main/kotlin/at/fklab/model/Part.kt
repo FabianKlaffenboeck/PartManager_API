@@ -13,7 +13,6 @@ object Parts : IntIdTable("Parts") {
     val quantity = integer("quantity")
     val value = double("value").nullable()
 
-    val measurementUnit_id = reference("measurementUnit_id", MeasurementUnits).nullable()
     val footprint_id = reference("footprint_id", Footprints).nullable()
     val partType_id = reference("partType_id", PartTypes)
     val manufacturer_id = reference("manufacturer_id", Manufacturers)
@@ -23,6 +22,8 @@ object Parts : IntIdTable("Parts") {
     val deletedAt = datetime("deletedAt").nullable()
 }
 
+
+
 class PartEntity(id: EntityID<Int>) : IntEntity(id) {
     companion object : IntEntityClass<PartEntity>(Parts)
 
@@ -30,7 +31,6 @@ class PartEntity(id: EntityID<Int>) : IntEntity(id) {
     var quantity by Parts.quantity
     var value by Parts.value
 
-    var measurementUnit by MeasurementUnitEntity optionalReferencedOn Parts.measurementUnit_id
     var footprint by FootprintEntity optionalReferencedOn Parts.footprint_id
     var partType by PartTypeEntity referencedOn Parts.partType_id
     var manufacturer by ManufacturerEntity referencedOn Parts.manufacturer_id
@@ -44,7 +44,6 @@ class PartEntity(id: EntityID<Int>) : IntEntity(id) {
         name,
         quantity,
         value,
-        measurementUnit?.toMeasurementUnit(),
         footprint?.toFootprint(),
         partType.toPartType(),
         manufacturer.toManufacturer(),
@@ -57,7 +56,7 @@ class Part(
     var name: String,
     var quantity: Int,
     var value: Double?,
-    var measurementUnit: MeasurementUnit?,
+//    var measurementUnit: ElectricalUnit?,
     var footprint: Footprint?,
     var partType: PartType,
     var manufacturer: Manufacturer,

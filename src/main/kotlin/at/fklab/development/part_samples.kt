@@ -1,7 +1,7 @@
 package at.fklab.development
 
+import at.fklab.model.ElectricalUnit
 import at.fklab.model.Footprint
-import at.fklab.model.MeasurementUnit
 import at.fklab.model.Part
 
 val sampleParts = listOf(
@@ -9,7 +9,7 @@ val sampleParts = listOf(
         id = 1,
         name = "Mcp 2515",
         quantity = 3,
-        measurementUnit = null,
+//        measurementUnit = null,
         value = null,
         footprint = null,
         partType = samplePartTypes[0],
@@ -20,7 +20,7 @@ val sampleParts = listOf(
         id = 2,
         name = "Mcp 2552",
         quantity = 3,
-        measurementUnit = sampleMeasurementUnits[0],
+//        measurementUnit = ElectricalUnit.values()[0],
         value = 564.00,
         footprint = sampleFootprints[0],
         partType = samplePartTypes[0],
@@ -31,7 +31,7 @@ val sampleParts = listOf(
         id = 3,
         name = "NCP1117",
         quantity = 3,
-        measurementUnit = sampleMeasurementUnits[0],
+//        measurementUnit = ElectricalUnit.values()[0],
         value = 100.00,
         footprint = sampleFootprints[0],
         partType = samplePartTypes[0],
