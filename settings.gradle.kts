@@ -1,1 +1,1 @@
-rootProject.name = "PartManagerAPI"
+rootProject.name = "PartManager"

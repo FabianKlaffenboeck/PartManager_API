@@ -1,5 +1,5 @@
 variables:
-  GRADLE_VERSION: "gradle:7.5-jdk18"
+  GRADLE_VERSION: "gradle:jdk21-corretto-al2023"
 
 include:
   project: 'FKLab/cicd_dry_templates'
