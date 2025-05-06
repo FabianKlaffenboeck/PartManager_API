@@ -8,7 +8,8 @@ import org.jetbrains.exposed.sql.javatime.datetime
 
 
 object Footprints : IntIdTable("Footprints") {
-    val name = varchar("name", 100)
+    val metric = varchar("metric", 100)
+    val imperial = varchar("imperial", 100)
 
     val updatedAt = datetime("updatedAt").nullable()
     val deletedAt = datetime("deletedAt").nullable()
@@ -17,17 +18,17 @@ object Footprints : IntIdTable("Footprints") {
 class FootprintEntity(id: EntityID<Int>) : IntEntity(id) {
     companion object : IntEntityClass<FootprintEntity>(Footprints)
 
-    var name by Footprints.name
+    var metric by Footprints.metric
+    var imperial by Footprints.imperial
 
     var updatedAt by Footprints.updatedAt
     var deletedAt by Footprints.deletedAt
 
     fun toFootprint() = Footprint(
-        id.value, name
+        id.value, metric, imperial
     )
 }
 
-data class Footprint(
-    var id: Int?,
-    var name: String
+class Footprint(
+    var id: Int?, var metric: String, var imperial: String
 )
