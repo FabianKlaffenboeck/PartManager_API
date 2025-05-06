@@ -52,7 +52,7 @@ class PartEntity(id: EntityID<Int>) : IntEntity(id) {
     )
 }
 
-class Part(
+data class Part(
     var id: Int?,
     var name: String,
     var quantity: Int,

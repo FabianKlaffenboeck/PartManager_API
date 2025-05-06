@@ -28,7 +28,7 @@ class PartTypeEntity(id: EntityID<Int>) : IntEntity(id) {
     )
 }
 
-class PartType(
+data class PartType(
     var id: Int?,
     var name: String,
 )

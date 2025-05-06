@@ -40,7 +40,7 @@ class ShelfEntity(id: EntityID<Int>) : IntEntity(id) {
     )
 }
 
-class Shelf(
+data class Shelf(
     var id: Int?,
     var name: String,
     var trays: List<Tray>

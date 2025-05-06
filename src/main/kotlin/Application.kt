@@ -1,20 +1,3 @@
-//package at.eWolveLabs
-//
-//import io.ktor.server.application.*
-//
-//fun main(args: Array<String>) {
-//    io.ktor.server.netty.EngineMain.main(args)
-//}
-//
-//fun Application.module() {
-//    configureHTTP()
-//    configureSecurity()
-//    configureMonitoring()
-//    configureSerialization()
-//    configureDatabases()
-//    configureRouting()
-//}
-
 package at.eWolveLabs
 
 import at.eWolveLabs.plugins.configureDatabases

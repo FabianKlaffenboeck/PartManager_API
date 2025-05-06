@@ -27,7 +27,7 @@ class TrayEntity(id: EntityID<Int>) : IntEntity(id) {
     )
 }
 
-class Tray(
+data class Tray(
     var id: Int?,
     var name: String
 )

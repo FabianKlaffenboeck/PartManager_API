@@ -27,7 +27,7 @@ class ManufacturerEntity(id: EntityID<Int>) : IntEntity(id) {
     )
 }
 
-class Manufacturer(
+data class Manufacturer(
     var id: Int?,
     var name: String
 )

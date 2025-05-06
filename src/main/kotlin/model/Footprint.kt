@@ -27,7 +27,7 @@ class FootprintEntity(id: EntityID<Int>) : IntEntity(id) {
     )
 }
 
-class Footprint(
+data class Footprint(
     var id: Int?,
     var name: String
 )

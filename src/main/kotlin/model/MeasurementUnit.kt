@@ -27,7 +27,7 @@ class MeasurementUnitEntity(id: EntityID<Int>) : IntEntity(id) {
     )
 }
 
-class MeasurementUnit(
+data class MeasurementUnit(
     var id: Int?,
     var name: String
 )
