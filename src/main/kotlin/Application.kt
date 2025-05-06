@@ -44,7 +44,7 @@ fun Application.module() {
         route("/api") {
             authenticate("basicAuth") {
                 openAPI(path = "openapi")
-                swaggerUI(path = "openapi")
+                swaggerUI(path = "swaggerui")
 
                 manufacturerRoute(ManufacturerService())
                 partRoute(PartService())
