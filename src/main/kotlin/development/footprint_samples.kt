@@ -5,54 +5,67 @@ import at.eWolveLabs.model.Footprint
 val sampleFootprints = listOf(
     Footprint(
         id = 1,
-        name = "_0402"
+        metric = "0402",
+        imperial = "0402"
     ),
     Footprint(
         id = 2,
-        name = "_0603"
+        metric = "0603",
+        imperial = "0603"
     ),
     Footprint(
         id = 3,
-        name = "_1005"
+        metric = "1005",
+        imperial = "1005"
     ),
     Footprint(
         id = 4,
-        name = "_1608"
+        metric = "1608",
+        imperial = "1608"
     ),
     Footprint(
         id = 5,
-        name = "_2012"
+        metric = "2012",
+        imperial = "2012"
     ),
     Footprint(
         id = 6,
-        name = "_2520"
+        metric = "2520",
+        imperial = "2520"
     ),
     Footprint(
         id = 7,
-        name = "_3216"
+        metric = "3216",
+        imperial = "3216"
     ),
     Footprint(
         id = 8,
-        name = "_3225"
+        metric = "3225",
+        imperial = "3225"
     ),
     Footprint(
         id = 9,
-        name = "_4516"
+        metric = "4516",
+        imperial = "4516"
     ),
     Footprint(
         id = 10,
-        name = "_4532"
+        metric = "4532",
+        imperial = "4532"
     ),
     Footprint(
         id = 11,
-        name = "_5025"
+        metric = "5025",
+        imperial = "5025"
     ),
     Footprint(
         id = 12,
-        name = "_6332"
+        metric = "6332",
+        imperial = "6332"
     ),
     Footprint(
         id = 13,
-        name = "leaded"
+        metric = "leaded",
+        imperial = "leaded"
     ),
 )

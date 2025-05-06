@@ -25,7 +25,7 @@ fun Application.module() {
     val dbPW: String = System.getenv("DBPW") ?: ""
 
     val initDB: Boolean = System.getenv("INITDB").toBoolean()
-    val populateDB: Boolean = System.getenv("POPULTEDB").toBoolean()
+    val populateDB: Boolean = System.getenv("POPULATEDB").toBoolean()
     val updateSchema: Boolean = System.getenv("UPDATESCHEMA").toBoolean()
 
     configureDatabases(dbUrl, dbUser, dbPW, updateSchema, initDB, populateDB)
@@ -41,7 +41,7 @@ fun Application.module() {
             shelfRoute(ShelfService())
             trayRoute(TrayService())
             footprintRoute(FootprintService())
-            measurementUnitRoute(MeasurementUnitService())
+            electricalUnitRoute()
         }
     }
 }

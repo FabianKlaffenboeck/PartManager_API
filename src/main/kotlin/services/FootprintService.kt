@@ -20,7 +20,8 @@ class FootprintService {
 
     fun add(footprint: Footprint): Footprint = transaction {
         FootprintEntity.new {
-            name = footprint.name
+            metric = footprint.metric
+            imperial = footprint.imperial
 
             updatedAt = LocalDateTime.now()
         }.toFootprint()
@@ -29,7 +30,8 @@ class FootprintService {
     fun update(footprint: Footprint): Footprint = transaction {
         val notNullId = footprint.id ?: -1
 
-        FootprintEntity[notNullId].name = footprint.name
+        FootprintEntity[notNullId].metric = footprint.metric
+        FootprintEntity[notNullId].imperial = footprint.imperial
 
         FootprintEntity[notNullId].updatedAt = LocalDateTime.now()
         FootprintEntity[notNullId].toFootprint()
