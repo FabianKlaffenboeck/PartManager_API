@@ -2,10 +2,13 @@ package at.eWolveLabs
 
 import at.eWolveLabs.plugins.configureDatabases
 import at.eWolveLabs.plugins.configureHTTP
+import at.eWolveLabs.plugins.configureSecurity
 import at.eWolveLabs.plugins.configureSerialization
 import at.eWolveLabs.routes.*
 import at.eWolveLabs.services.*
 import io.ktor.server.application.*
+import io.ktor.server.auth.authenticate
+import io.ktor.server.auth.authentication
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 import io.ktor.server.plugins.swagger.*
@@ -31,17 +34,20 @@ fun Application.module() {
     configureDatabases(dbUrl, dbUser, dbPW, updateSchema, initDB, populateDB)
     configureHTTP()
     configureSerialization()
+    configureSecurity()
 
     routing {
         route("/api") {
-            swaggerUI(path = "swagger", swaggerFile = "openapi/documentation.yaml")
-            manufacturerRoute(ManufacturerService())
-            partRoute(PartService())
-            partTypeRoute(PartTypeService())
-            shelfRoute(ShelfService())
-            trayRoute(TrayService())
-            footprintRoute(FootprintService())
-            electricalUnitRoute()
+            authenticate("basicAuth") {
+                swaggerUI(path = "swagger", swaggerFile = "openapi/documentation.yaml")
+                manufacturerRoute(ManufacturerService())
+                partRoute(PartService())
+                partTypeRoute(PartTypeService())
+                shelfRoute(ShelfService())
+                trayRoute(TrayService())
+                footprintRoute(FootprintService())
+                electricalUnitRoute()
+            }
         }
     }
 }
