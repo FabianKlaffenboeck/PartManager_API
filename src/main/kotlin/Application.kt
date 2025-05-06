@@ -7,11 +7,12 @@ import at.eWolveLabs.plugins.configureSerialization
 import at.eWolveLabs.routes.*
 import at.eWolveLabs.services.*
 import io.ktor.server.application.*
-import io.ktor.server.auth.authenticate
-import io.ktor.server.auth.authentication
+import io.ktor.server.auth.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
+import io.ktor.server.plugins.openapi.*
 import io.ktor.server.plugins.swagger.*
+import io.ktor.server.response.*
 import io.ktor.server.routing.*
 
 fun main() {
@@ -37,9 +38,14 @@ fun Application.module() {
     configureSecurity()
 
     routing {
+        get("/") {
+            call.respond("Hello from an eWolveLabs product")
+        }
         route("/api") {
             authenticate("basicAuth") {
-                swaggerUI(path = "swagger", swaggerFile = "openapi/documentation.yaml")
+                openAPI(path = "openapi")
+                swaggerUI(path = "openapi")
+
                 manufacturerRoute(ManufacturerService())
                 partRoute(PartService())
                 partTypeRoute(PartTypeService())
