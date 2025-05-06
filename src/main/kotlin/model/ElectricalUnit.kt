@@ -1,35 +1,35 @@
 package at.eWolveLabs.model
 
-enum class ElectricalUnit(val symbol: String, val description: String) {
+enum class ElectricalUnit(val id: Int, val symbol: String, val description: String) {
     // Voltage
-    VOLT("V", "Voltage"),
+    VOLT(0, "V", "Voltage"),
 
     // Current
-    AMPERE("A", "Electric Current"),
+    AMPERE(1, "A", "Electric Current"),
 
     // Resistance
-    OHM("Ω", "Electrical Resistance"),
+    OHM(2, "Ω", "Electrical Resistance"),
 
     // Conductance
-    SIEMENS("S", "Electrical Conductance"),
+    SIEMENS(3, "S", "Electrical Conductance"),
 
     // Capacitance
-    FARAD("F", "Capacitance"),
+    FARAD(4, "F", "Capacitance"),
 
     // Inductance
-    HENRY("H", "Inductance"),
+    HENRY(5, "H", "Inductance"),
 
     // Power
-    WATT("W", "Power"),
+    WATT(6, "W", "Power"),
 
     // Energy
-    JOULE("J", "Energy"),
+    JOULE(7, "J", "Energy"),
 
     // Electric Charge
-    COULOMB("C", "Electric Charge"),
+    COULOMB(8, "C", "Electric Charge"),
 
     // Frequency
-    HERTZ("Hz", "Frequency");
+    HERTZ(9, "Hz", "Frequency");
 
     override fun toString(): String {
         return "$name ($symbol) - $description"
