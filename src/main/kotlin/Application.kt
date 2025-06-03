@@ -4,6 +4,7 @@ import at.eWolveLabs.plugins.configureDatabases
 import at.eWolveLabs.plugins.configureHTTP
 import at.eWolveLabs.plugins.configureSecurity
 import at.eWolveLabs.plugins.configureSerialization
+import at.eWolveLabs.plugins.loadJwtConfig
 import at.eWolveLabs.routes.*
 import at.eWolveLabs.services.*
 import io.ktor.server.application.*
@@ -32,19 +33,24 @@ fun Application.module() {
     val populateDB: Boolean = System.getenv("POPULATEDB").toBoolean()
     val updateSchema: Boolean = System.getenv("UPDATESCHEMA").toBoolean()
 
+    val jwtConfig = loadJwtConfig()
+
     configureDatabases(dbUrl, dbUser, dbPW, updateSchema, initDB, populateDB)
     configureHTTP()
     configureSerialization()
-    configureSecurity()
+    configureSecurity(jwtConfig)
 
     routing {
         get("/") {
             call.respond("Hello from an eWolveLabs product")
         }
         route("/api") {
+            loginRoute(jwtConfig)
+
             authenticate("basicAuth") {
                 openAPI(path = "openapi")
                 swaggerUI(path = "swaggerui")
+
 
                 manufacturerRoute(ManufacturerService())
                 partRoute(PartService())

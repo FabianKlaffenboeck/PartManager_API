@@ -15,4 +15,16 @@ val sampleTrays = listOf(
         id = 3,
         name = "test03",
     ),
+    Tray(
+        id = 4,
+        name = "test04",
+    ),
+    Tray(
+        id = 5,
+        name = "test05",
+    ),
+    Tray(
+        id = 6,
+        name = "test06",
+    ),
 )
