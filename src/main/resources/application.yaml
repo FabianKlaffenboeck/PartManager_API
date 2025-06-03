@@ -5,7 +5,7 @@ ktor:
   deployment:
     port: 8080
   jwt:
-    domain: "https://part01.klaffenboeck.eu/"
+    domain: "https://myridan.ewolvelabs.com/"
     audience: "jwt-audience"
     realm: "ktor sample app"
     secret: "super-secret-key"

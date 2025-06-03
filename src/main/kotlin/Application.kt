@@ -47,7 +47,7 @@ fun Application.module() {
         route("/api") {
             loginRoute(jwtConfig)
 
-            authenticate("basicAuth") {
+            authenticate("basicAuth", "auth-jwt") {
                 openAPI(path = "openapi")
                 swaggerUI(path = "swaggerui")
 

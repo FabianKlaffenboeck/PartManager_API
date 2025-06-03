@@ -15,7 +15,7 @@ fun Route.loginRoute(jwtConfig: JwtConfig) {
     route("/login") {
         post {
             val request = call.receive<LoginRequest>()
-            if (request.username == "admin" && request.password == "password") {
+            if (request.username.isNotEmpty() && request.password.isNotEmpty()) {
                 val token = JWT.create()
                     .withAudience(jwtConfig.audience)
                     .withIssuer(jwtConfig.domain)
