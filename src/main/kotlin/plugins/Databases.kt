@@ -8,7 +8,7 @@ import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.transactions.transaction
 
-val tables = listOf(Footprints, Trays, Shelfs, ShelfTrays, PartTypes, Manufacturers, Parts)
+val tables = listOf(Footprints, Trays, Shelfs, ShelfTrays, PartTypes, Manufacturers, Parts, Users)
 
 fun Application.configureDatabases(
     dbUrl: String,
