@@ -23,11 +23,13 @@ fun Application.configureSecurity(jwtConfig: JwtConfig) {
         jwt("auth-jwt") {
             realm = jwtConfig.realm
             verifier(
-                JWT.require(Algorithm.HMAC256(jwtConfig.secret)).withIssuer(jwtConfig.domain)
+                JWT
+                    .require(Algorithm.HMAC256(jwtConfig.secret))
+                    .withIssuer(jwtConfig.domain)
                     .withAudience(jwtConfig.audience).build()
             )
             validate { credential ->
-                if (credential.payload.audience.contains(jwtConfig.audience)) {
+                if (credential.payload.getClaim("username").asString() != "") {
                     JWTPrincipal(credential.payload)
                 } else null
             }

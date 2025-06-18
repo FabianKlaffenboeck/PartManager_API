@@ -40,17 +40,16 @@ fun Application.module() {
     configureSerialization()
     configureSecurity(jwtConfig)
 
+    val userService = UserService()
+
     routing {
-        get("/") {
-            call.respond("Hello from an eWolveLabs product")
-        }
         route("/api") {
-            loginRoute(jwtConfig)
+            registerRoute(userService)
+            loginRoute(jwtConfig, userService)
 
             authenticate("basicAuth", "auth-jwt") {
                 openAPI(path = "openapi")
                 swaggerUI(path = "swaggerui")
-
 
                 manufacturerRoute(ManufacturerService())
                 partRoute(PartService())
