@@ -16,7 +16,6 @@ version = "0.0.1"
 
 tasks.test {
     useJUnitPlatform()
-    // NO finalizedBy here to avoid failure
     finalizedBy(tasks.jacocoTestReport)
 }
 
@@ -29,7 +28,6 @@ tasks.jacocoTestReport {
         csv.required.set(false)
     }
 }
-
 
 application {
     mainClass = "io.ktor.server.netty.EngineMain"
