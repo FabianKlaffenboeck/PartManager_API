@@ -20,11 +20,11 @@ tasks.test {
 }
 
 tasks.jacocoTestReport {
-    dependsOn(tasks.test)    // Tests must run before generating report
+    dependsOn(tasks.test)
 
     reports {
-        xml.required.set(true)    // Needed for GitLab coverage parsing
-        html.required.set(true)   // Human-readable local report
+        xml.required.set(true)
+        html.required.set(true)
         csv.required.set(false)
     }
 }
