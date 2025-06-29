@@ -5,14 +5,37 @@ val logback_version: String by project
 val sqlite_version: String by project
 
 plugins {
+    jacoco
     kotlin("jvm") version "2.1.10"
     id("io.ktor.plugin") version "3.1.2"
     id("org.jetbrains.kotlin.plugin.serialization") version "2.1.10"
-    jacoco
 }
 
 group = "at.eWolveLabs"
 version = "0.0.1"
+
+jacoco {
+    toolVersion = "0.8.10"  // or latest stable version
+}
+
+tasks.test {
+    useJUnitPlatform()
+    finalizedBy(tasks.jacocoTestReport) // generate coverage report after tests
+
+    reports {
+        junitXml.required.set(true)    // for GitLab test reports
+        html.required.set(true)        // human-readable reports locally
+    }
+}
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test)
+    reports {
+        xml.required.set(true)         // GitLab can parse XML coverage report
+        html.required.set(true)
+        csv.required.set(false)
+    }
+}
 
 application {
     mainClass = "io.ktor.server.netty.EngineMain"
@@ -23,24 +46,6 @@ application {
 
 repositories {
     mavenCentral()
-}
-
-jacoco {
-    toolVersion = "0.8.10"
-}
-
-tasks.test {
-    useJUnitPlatform()
-    finalizedBy(tasks.jacocoTestReport)
-}
-
-tasks.jacocoTestReport {
-    dependsOn(tasks.test)
-    reports {
-        html.required.set(true)
-        xml.required.set(true)
-        csv.required.set(false)
-    }
 }
 
 dependencies {
@@ -76,5 +81,4 @@ dependencies {
     testImplementation("io.ktor:ktor-server-test-host")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
     testImplementation("io.ktor:ktor-server-test-host-jvm:3.1.2")
-
 }
