@@ -14,28 +14,22 @@ plugins {
 group = "at.eWolveLabs"
 version = "0.0.1"
 
-jacoco {
-    toolVersion = "0.8.10"  // or latest stable version
-}
-
 tasks.test {
     useJUnitPlatform()
-    finalizedBy(tasks.jacocoTestReport) // generate coverage report after tests
-
-    reports {
-        junitXml.required.set(true)    // for GitLab test reports
-        html.required.set(true)        // human-readable reports locally
-    }
+    // NO finalizedBy here to avoid failure
+    finalizedBy(tasks.jacocoTestReport)
 }
 
 tasks.jacocoTestReport {
-    dependsOn(tasks.test)
+    dependsOn(tasks.test)    // Tests must run before generating report
+
     reports {
-        xml.required.set(true)         // GitLab can parse XML coverage report
-        html.required.set(true)
+        xml.required.set(true)    // Needed for GitLab coverage parsing
+        html.required.set(true)   // Human-readable local report
         csv.required.set(false)
     }
 }
+
 
 application {
     mainClass = "io.ktor.server.netty.EngineMain"
@@ -79,6 +73,6 @@ dependencies {
     implementation("org.mindrot:jbcrypt:0.4")
 
     testImplementation("io.ktor:ktor-server-test-host")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+    testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("io.ktor:ktor-server-test-host-jvm:3.1.2")
 }
