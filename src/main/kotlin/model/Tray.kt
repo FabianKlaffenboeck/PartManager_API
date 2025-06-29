@@ -1,5 +1,6 @@
 package at.eWolveLabs.model
 
+import kotlinx.serialization.Serializable
 import org.jetbrains.exposed.dao.IntEntity
 import org.jetbrains.exposed.dao.IntEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
@@ -27,6 +28,7 @@ class TrayEntity(id: EntityID<Int>) : IntEntity(id) {
     )
 }
 
+@Serializable
 data class Tray(
     var id: Int?,
     var name: String

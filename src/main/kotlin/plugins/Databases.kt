@@ -11,12 +11,7 @@ import org.jetbrains.exposed.sql.transactions.transaction
 val tables = listOf(Footprints, Trays, Shelfs, ShelfTrays, PartTypes, Manufacturers, Parts, Users)
 
 fun Application.configureDatabases(
-    dbUrl: String,
-    dbUser: String,
-    dbPW: String,
-    updateSchema: Boolean,
-    initDB: Boolean,
-    populateDB: Boolean
+    dbUrl: String, dbUser: String, dbPW: String, updateSchema: Boolean, initDB: Boolean, populateDB: Boolean
 ) {
 
     val database = Database.connect(url = dbUrl, user = dbUser, password = dbPW)
@@ -84,6 +79,11 @@ fun populateDB() {
     transaction {
         for (part in sampleParts) {
             PartService().add(part)
+        }
+    }
+    transaction {
+        for (user in sampleUsers) {
+            UserService().add(user)
         }
     }
 }

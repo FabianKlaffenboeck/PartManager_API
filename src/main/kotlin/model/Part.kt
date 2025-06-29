@@ -1,5 +1,6 @@
 package at.eWolveLabs.model
 
+import kotlinx.serialization.Serializable
 import org.jetbrains.exposed.dao.IntEntity
 import org.jetbrains.exposed.dao.IntEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
@@ -52,7 +53,8 @@ class PartEntity(id: EntityID<Int>) : IntEntity(id) {
     )
 }
 
-class Part(
+@Serializable
+data class Part(
     var id: Int?,
     var name: String,
     var quantity: Int,

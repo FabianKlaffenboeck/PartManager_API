@@ -1,10 +1,10 @@
 openapi: "3.1.0"
 info:
-  title: "partmanager_api API"
-  description: "partmanager_api API"
+  title: "Myridan API"
+  description: "Myridan API"
   version: "1.0.0"
 servers:
-  - url: "http://127.0.0.1:8080"
+  - url: "https://Myridan"
 paths:
   /json/gson:
     get:
@@ -36,19 +36,6 @@ paths:
             '*/*':
               schema:
                 $ref: "#/components/schemas/Map_String"
-  /:
-    get:
-      description: ""
-      responses:
-        "200":
-          description: "OK"
-          content:
-            '*/*':
-              schema:
-                type: "string"
-              examples:
-                Example#1:
-                  value: "Hello from an eWolveLabs product"
   /api/electricalUnits:
     get:
       description: ""
@@ -135,6 +122,28 @@ paths:
             '*/*':
               schema:
                 $ref: "#/components/schemas/Footprint"
+  /api/login:
+    post:
+      description: ""
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginRequest"
+        required: true
+      responses:
+        "401":
+          description: "Unauthorized"
+          content:
+            '*/*':
+              schema:
+                type: "object"
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Map_String"
   /api/manufacturers:
     get:
       description: ""
@@ -363,6 +372,31 @@ paths:
             '*/*':
               schema:
                 $ref: "#/components/schemas/Part"
+  /api/register:
+    post:
+      description: ""
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegisterRequest"
+        required: true
+      responses:
+        "409":
+          description: "Conflict"
+          content:
+            '*/*':
+              schema:
+                type: "object"
+        "201":
+          description: "Created"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: "User registered"
   /api/shelfs:
     get:
       description: ""
@@ -544,6 +578,16 @@ components:
     Unit:
       type: "object"
       properties: { }
+    LoginRequest:
+      type: "object"
+      properties:
+        username:
+          type: "string"
+        password:
+          type: "string"
+      required:
+        - "username"
+        - "password"
     Manufacturer:
       type: "object"
       properties:
@@ -622,6 +666,16 @@ components:
         - "partType"
         - "manufacturer"
         - "tray"
+    RegisterRequest:
+      type: "object"
+      properties:
+        username:
+          type: "string"
+        password:
+          type: "string"
+      required:
+        - "username"
+        - "password"
     Shelf:
       type: "object"
       properties:
