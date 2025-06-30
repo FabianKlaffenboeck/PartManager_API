@@ -24,7 +24,6 @@ tasks.jacocoTestReport {
 
     reports {
         xml.required.set(true)
-        xml.outputLocation.set(file("$buildDir/reports/jacoco/test/jacoco.xml"))
         html.required.set(true)
         csv.required.set(false)
     }
