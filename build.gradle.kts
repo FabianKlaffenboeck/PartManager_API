@@ -19,7 +19,6 @@ jacoco {
     toolVersion = "0.8.13"
 }
 
-
 tasks.test {
     useJUnitPlatform()
     finalizedBy(tasks.jacocoTestReport)
