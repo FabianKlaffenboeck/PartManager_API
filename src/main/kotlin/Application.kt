@@ -2,19 +2,13 @@ package at.eWolveLabs
 
 import at.eWolveLabs.plugins.configureDatabases
 import at.eWolveLabs.plugins.configureHTTP
+import at.eWolveLabs.plugins.configureRouting
 import at.eWolveLabs.plugins.configureSecurity
 import at.eWolveLabs.plugins.configureSerialization
 import at.eWolveLabs.plugins.loadJwtConfig
-import at.eWolveLabs.routes.*
-import at.eWolveLabs.services.*
 import io.ktor.server.application.*
-import io.ktor.server.auth.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
-import io.ktor.server.plugins.openapi.*
-import io.ktor.server.plugins.swagger.*
-import io.ktor.server.response.*
-import io.ktor.server.routing.*
 
 fun main() {
     embeddedServer(
@@ -24,7 +18,7 @@ fun main() {
 
 fun Application.module() {
 
-    val dbUrl: String = System.getenv("DBURL") ?: "jdbc:sqlite:TestDB"
+    val dbUrl: String = System.getenv("DBURL") ?: "jdbc:sqlite:Myridan"
 
     val dbUser: String = System.getenv("DBUSER") ?: "root"
     val dbPW: String = System.getenv("DBPW") ?: ""
@@ -38,27 +32,8 @@ fun Application.module() {
     configureDatabases(dbUrl, dbUser, dbPW, updateSchema, initDB, populateDB)
     configureHTTP()
     configureSerialization()
+
     configureSecurity(jwtConfig)
 
-    val userService = UserService()
-
-    routing {
-        route("/api") {
-            registerRoute(userService)
-            loginRoute(jwtConfig, userService)
-
-            authenticate("basicAuth", "auth-jwt") {
-                openAPI(path = "openapi")
-                swaggerUI(path = "swaggerui")
-
-                manufacturerRoute(ManufacturerService())
-                partRoute(PartService())
-                partTypeRoute(PartTypeService())
-                shelfRoute(ShelfService())
-                trayRoute(TrayService())
-                footprintRoute(FootprintService())
-                electricalUnitRoute()
-            }
-        }
-    }
+    configureRouting(jwtConfig)
 }

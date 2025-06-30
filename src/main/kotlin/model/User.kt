@@ -1,5 +1,6 @@
 package at.eWolveLabs.model
 
+import kotlinx.serialization.Serializable
 import org.jetbrains.exposed.dao.IntEntity
 import org.jetbrains.exposed.dao.IntEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
@@ -31,6 +32,7 @@ class UserEntity(id: EntityID<Int>) : IntEntity(id) {
     )
 }
 
+@Serializable
 data class User(
     var id: Int?,
     var username: String,

@@ -1,1 +1,1 @@
-rootProject.name = "PartManager"
+rootProject.name = "Myridan"

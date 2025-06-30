@@ -1,5 +1,6 @@
 package at.eWolveLabs.model
 
+import kotlinx.serialization.Serializable
 import org.jetbrains.exposed.dao.IntEntity
 import org.jetbrains.exposed.dao.IntEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
@@ -29,6 +30,7 @@ class FootprintEntity(id: EntityID<Int>) : IntEntity(id) {
     )
 }
 
-class Footprint(
+@Serializable
+data class Footprint(
     var id: Int?, var metric: String, var imperial: String
 )

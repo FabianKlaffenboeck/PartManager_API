@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>partmanager_api API</title>
+  <title>Myridan API</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="UTF-8" />
@@ -704,6 +704,13 @@
     "imperial" : { }
   }
 };
+            defs["LoginRequest"] = {
+  "required" : [ "password", "username" ],
+  "properties" : {
+    "username" : { },
+    "password" : { }
+  }
+};
             defs["Manufacturer"] = {
   "required" : [ "name" ],
   "properties" : {
@@ -759,6 +766,13 @@
       "nullable" : true
     },
     "name" : { }
+  }
+};
+            defs["RegisterRequest"] = {
+  "required" : [ "password", "username" ],
+  "properties" : {
+    "username" : { },
+    "password" : { }
   }
 };
             defs["Shelf"] = {
@@ -821,6 +835,9 @@
                     <li data-group="Default" data-name="apiFootprintsPost" class="">
                       <a href="#api-Default-apiFootprintsPost">apiFootprintsPost</a>
                     </li>
+                    <li data-group="Default" data-name="apiLoginPost" class="">
+                      <a href="#api-Default-apiLoginPost">apiLoginPost</a>
+                    </li>
                     <li data-group="Default" data-name="apiManufacturersGet" class="">
                       <a href="#api-Default-apiManufacturersGet">apiManufacturersGet</a>
                     </li>
@@ -857,6 +874,9 @@
                     <li data-group="Default" data-name="apiPartsPost" class="">
                       <a href="#api-Default-apiPartsPost">apiPartsPost</a>
                     </li>
+                    <li data-group="Default" data-name="apiRegisterPost" class="">
+                      <a href="#api-Default-apiRegisterPost">apiRegisterPost</a>
+                    </li>
                     <li data-group="Default" data-name="apiShelfsGet" class="">
                       <a href="#api-Default-apiShelfsGet">apiShelfsGet</a>
                     </li>
@@ -890,16 +910,13 @@
                     <li data-group="Default" data-name="jsonKotlinxSerializationGet" class="">
                       <a href="#api-Default-jsonKotlinxSerializationGet">jsonKotlinxSerializationGet</a>
                     </li>
-                    <li data-group="Default" data-name="rootGet" class="">
-                      <a href="#api-Default-rootGet">rootGet</a>
-                    </li>
           </ul>
         </nav>
       </div>
       <div id="content">
         <div id="project">
           <div class="pull-left">
-            <h1>partmanager_api API</h1>
+            <h1>Myridan API</h1>
           </div>
           <div class="clearfix"></div>
         </div>
@@ -908,7 +925,7 @@
             <h2 id="welcome-to-apidoc">API and SDK Documentation</h2>
               <div class="app-desc">Version: 1.0.0</div>
             <hr>
-            <div>partmanager_api API</div>
+            <div>Myridan API</div>
           </div>
         </div>
         <div id="sections">
@@ -948,7 +965,7 @@
                           <div class="tab-pane active" id="examples-Default-apiElectricalUnitsGet-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X GET\
 -H "Accept: */*"\
-"http://127.0.0.1:8080/api/electricalUnits"</code></pre>
+"https://Myridan/api/electricalUnits"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-apiElectricalUnitsGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -1013,9 +1030,9 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
                             </div>
 
                             <div class="tab-pane" id="examples-Default-apiElectricalUnitsGet-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var PartmanagerApiApi = require('partmanager_api_api');
+                              <pre class="prettyprint"><code class="language-js">var MyridanApi = require('myridan_api');
 
-var api = new PartmanagerApiApi.DefaultApi()
+var api = new MyridanApi.DefaultApi()
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -1203,7 +1220,7 @@ except ApiException as e:
                           <div class="tab-pane active" id="examples-Default-apiFootprintsGet-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X GET\
 -H "Accept: */*"\
-"http://127.0.0.1:8080/api/footprints"</code></pre>
+"https://Myridan/api/footprints"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-apiFootprintsGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -1263,9 +1280,9 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
                             </div>
 
                             <div class="tab-pane" id="examples-Default-apiFootprintsGet-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var PartmanagerApiApi = require('partmanager_api_api');
+                              <pre class="prettyprint"><code class="language-js">var MyridanApi = require('myridan_api');
 
-var api = new PartmanagerApiApi.DefaultApi()
+var api = new MyridanApi.DefaultApi()
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -1452,7 +1469,7 @@ except ApiException as e:
                           <div class="tab-pane active" id="examples-Default-apiFootprintsIdDelete-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE\
 -H "Accept: */*"\
-"http://127.0.0.1:8080/api/footprints/{id}"</code></pre>
+"https://Myridan/api/footprints/{id}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-apiFootprintsIdDelete-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -1520,9 +1537,9 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
                             </div>
 
                             <div class="tab-pane" id="examples-Default-apiFootprintsIdDelete-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var PartmanagerApiApi = require('partmanager_api_api');
+                              <pre class="prettyprint"><code class="language-js">var MyridanApi = require('myridan_api');
 
-var api = new PartmanagerApiApi.DefaultApi()
+var api = new MyridanApi.DefaultApi()
 var id = ; // {{}} 
 
 var callback = function(error, data, response) {
@@ -1790,7 +1807,7 @@ except ApiException as e:
                           <div class="tab-pane active" id="examples-Default-apiFootprintsIdGet-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X GET\
 -H "Accept: */*"\
-"http://127.0.0.1:8080/api/footprints/{id}"</code></pre>
+"https://Myridan/api/footprints/{id}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-apiFootprintsIdGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -1858,9 +1875,9 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
                             </div>
 
                             <div class="tab-pane" id="examples-Default-apiFootprintsIdGet-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var PartmanagerApiApi = require('partmanager_api_api');
+                              <pre class="prettyprint"><code class="language-js">var MyridanApi = require('myridan_api');
 
-var api = new PartmanagerApiApi.DefaultApi()
+var api = new MyridanApi.DefaultApi()
 var id = ; // {{}} 
 
 var callback = function(error, data, response) {
@@ -2177,7 +2194,7 @@ except ApiException as e:
                            <pre class="prettyprint"><code class="language-bsh">curl -X POST\
 -H "Accept: */*"\
 -H "Content-Type: application/json"\
-"http://127.0.0.1:8080/api/footprints"</code></pre>
+"https://Myridan/api/footprints"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-apiFootprintsPost-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -2245,9 +2262,9 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
                             </div>
 
                             <div class="tab-pane" id="examples-Default-apiFootprintsPost-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var PartmanagerApiApi = require('partmanager_api_api');
+                              <pre class="prettyprint"><code class="language-js">var MyridanApi = require('myridan_api');
 
-var api = new PartmanagerApiApi.DefaultApi()
+var api = new MyridanApi.DefaultApi()
 var body = ; // {{Footprint}} 
 
 var callback = function(error, data, response) {
@@ -2450,6 +2467,362 @@ except ApiException as e:
                         </article>
                       </div>
                       <hr>
+                    <div id="api-Default-apiLoginPost">
+                      <article id="api-Default-apiLoginPost-0" data-group="User" data-name="apiLoginPost" data-version="0">
+                        <div class="pull-left">
+                          <h1>apiLoginPost</h1>
+                          <p></p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/api/login</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Default-apiLoginPost-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Default-apiLoginPost-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Default-apiLoginPost-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Default-apiLoginPost-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Default-apiLoginPost-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Default-apiLoginPost-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Default-apiLoginPost-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Default-apiLoginPost-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Default-apiLoginPost-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Default-apiLoginPost-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Default-apiLoginPost-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Default-apiLoginPost-0-curl">
+                           <pre class="prettyprint"><code class="language-bsh">curl -X POST\
+-H "Accept: */*"\
+-H "Content-Type: application/json"\
+"https://Myridan/api/login"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Default-apiLoginPost-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.DefaultApi;
+
+import java.io.File;
+import java.util.*;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        
+        DefaultApi apiInstance = new DefaultApi();
+        LoginRequest body = ; // LoginRequest | 
+        try {
+            Map_String result = apiInstance.apiLoginPost(body);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#apiLoginPost");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Default-apiLoginPost-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        DefaultApi apiInstance = new DefaultApi();
+        LoginRequest body = ; // LoginRequest | 
+        try {
+            Map_String result = apiInstance.apiLoginPost(body);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#apiLoginPost");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Default-apiLoginPost-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Default-apiLoginPost-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">LoginRequest *body = ; // 
+
+DefaultApi *apiInstance = [[DefaultApi alloc] init];
+
+[apiInstance apiLoginPostWith:body
+              completionHandler: ^(Map_String output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-apiLoginPost-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var MyridanApi = require('myridan_api');
+
+var api = new MyridanApi.DefaultApi()
+var body = ; // {{LoginRequest}} 
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.apiLoginPost(body, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Default-apiLoginPost-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Default-apiLoginPost-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class apiLoginPostExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new DefaultApi();
+            var body = new LoginRequest(); // LoginRequest | 
+
+            try
+            {
+                Map_String result = apiInstance.apiLoginPost(body);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.apiLoginPost: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-apiLoginPost-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\ApiDefaultApi();
+$body = ; // LoginRequest | 
+
+try {
+    $result = $api_instance->apiLoginPost($body);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->apiLoginPost: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-apiLoginPost-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::DefaultApi;
+
+my $api_instance = WWW::SwaggerClient::DefaultApi->new();
+my $body = WWW::SwaggerClient::Object::LoginRequest->new(); # LoginRequest | 
+
+eval { 
+    my $result = $api_instance->apiLoginPost(body => $body);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling DefaultApi->apiLoginPost: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-apiLoginPost-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+body =  # LoginRequest | 
+
+try: 
+    api_response = api_instance.api_login_post(body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->apiLoginPost: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+                            <div class="methodsubtabletitle">Body parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">body <span style="color:red;">*</span></td>
+                                <td>
+                                
+                                
+                                <script>
+                                $(document).ready(function() {
+                                  var schemaWrapper = {
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/LoginRequest"
+      }
+    }
+  },
+  "required" : true
+};
+                                  var schema = schemaWrapper.content["application/json"].schema;
+                                  if (schema.$ref != null) {
+                                    schema = defsParser.$refs.get(schema.$ref);
+                                  } else {
+                                    schemaWrapper.components = {};
+                                    schemaWrapper.components.schemas = Object.assign({}, defs);
+                                    $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                      console.log(err);
+                                    });
+                                  }
+                                
+                                  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+                                  var result = $('#d2e199_apiLoginPost_body');
+                                  result.empty();
+                                  result.append(view.render());
+                                });
+                                </script>
+                                <div id="d2e199_apiLoginPost_body"></div>
+                                </td>
+                                </tr>
+                            </table>
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 401 - Unauthorized </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-apiLoginPost-401-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-apiLoginPost-401-schema">
+                                  <div id='responses-apiLoginPost-401-schema-401' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Unauthorized",
+  "content" : {
+    "*/*" : {
+      "schema" : {
+        "x-content-type" : "*/*"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["*/*"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-apiLoginPost-401-schema-data').val(stringify(schema));
+                                        var result = $('#responses-apiLoginPost-401-schema-401');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-apiLoginPost-401-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 200 - OK </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-apiLoginPost-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-apiLoginPost-200-schema">
+                                  <div id='responses-apiLoginPost-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "OK",
+  "content" : {
+    "*/*" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/Map_String"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["*/*"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-apiLoginPost-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-apiLoginPost-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-apiLoginPost-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
                     <div id="api-Default-apiManufacturersGet">
                       <article id="api-Default-apiManufacturersGet-0" data-group="User" data-name="apiManufacturersGet" data-version="0">
                         <div class="pull-left">
@@ -2484,7 +2857,7 @@ except ApiException as e:
                           <div class="tab-pane active" id="examples-Default-apiManufacturersGet-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X GET\
 -H "Accept: */*"\
-"http://127.0.0.1:8080/api/manufacturers"</code></pre>
+"https://Myridan/api/manufacturers"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-apiManufacturersGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -2544,9 +2917,9 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
                             </div>
 
                             <div class="tab-pane" id="examples-Default-apiManufacturersGet-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var PartmanagerApiApi = require('partmanager_api_api');
+                              <pre class="prettyprint"><code class="language-js">var MyridanApi = require('myridan_api');
 
-var api = new PartmanagerApiApi.DefaultApi()
+var api = new MyridanApi.DefaultApi()
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -2733,7 +3106,7 @@ except ApiException as e:
                           <div class="tab-pane active" id="examples-Default-apiManufacturersIdDelete-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE\
 -H "Accept: */*"\
-"http://127.0.0.1:8080/api/manufacturers/{id}"</code></pre>
+"https://Myridan/api/manufacturers/{id}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-apiManufacturersIdDelete-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -2801,9 +3174,9 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
                             </div>
 
                             <div class="tab-pane" id="examples-Default-apiManufacturersIdDelete-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var PartmanagerApiApi = require('partmanager_api_api');
+                              <pre class="prettyprint"><code class="language-js">var MyridanApi = require('myridan_api');
 
-var api = new PartmanagerApiApi.DefaultApi()
+var api = new MyridanApi.DefaultApi()
 var id = ; // {{}} 
 
 var callback = function(error, data, response) {
@@ -3071,7 +3444,7 @@ except ApiException as e:
                           <div class="tab-pane active" id="examples-Default-apiManufacturersIdGet-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X GET\
 -H "Accept: */*"\
-"http://127.0.0.1:8080/api/manufacturers/{id}"</code></pre>
+"https://Myridan/api/manufacturers/{id}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-apiManufacturersIdGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -3139,9 +3512,9 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
                             </div>
 
                             <div class="tab-pane" id="examples-Default-apiManufacturersIdGet-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var PartmanagerApiApi = require('partmanager_api_api');
+                              <pre class="prettyprint"><code class="language-js">var MyridanApi = require('myridan_api');
 
-var api = new PartmanagerApiApi.DefaultApi()
+var api = new MyridanApi.DefaultApi()
 var id = ; // {{}} 
 
 var callback = function(error, data, response) {
@@ -3458,7 +3831,7 @@ except ApiException as e:
                            <pre class="prettyprint"><code class="language-bsh">curl -X POST\
 -H "Accept: */*"\
 -H "Content-Type: application/json"\
-"http://127.0.0.1:8080/api/manufacturers"</code></pre>
+"https://Myridan/api/manufacturers"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-apiManufacturersPost-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -3526,9 +3899,9 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
                             </div>
 
                             <div class="tab-pane" id="examples-Default-apiManufacturersPost-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var PartmanagerApiApi = require('partmanager_api_api');
+                              <pre class="prettyprint"><code class="language-js">var MyridanApi = require('myridan_api');
 
-var api = new PartmanagerApiApi.DefaultApi()
+var api = new MyridanApi.DefaultApi()
 var body = ; // {{Manufacturer}} 
 
 var callback = function(error, data, response) {
@@ -3765,7 +4138,7 @@ except ApiException as e:
                           <div class="tab-pane active" id="examples-Default-apiPartTypesGet-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X GET\
 -H "Accept: */*"\
-"http://127.0.0.1:8080/api/partTypes"</code></pre>
+"https://Myridan/api/partTypes"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-apiPartTypesGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -3825,9 +4198,9 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
                             </div>
 
                             <div class="tab-pane" id="examples-Default-apiPartTypesGet-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var PartmanagerApiApi = require('partmanager_api_api');
+                              <pre class="prettyprint"><code class="language-js">var MyridanApi = require('myridan_api');
 
-var api = new PartmanagerApiApi.DefaultApi()
+var api = new MyridanApi.DefaultApi()
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -4014,7 +4387,7 @@ except ApiException as e:
                           <div class="tab-pane active" id="examples-Default-apiPartTypesIdDelete-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE\
 -H "Accept: */*"\
-"http://127.0.0.1:8080/api/partTypes/{id}"</code></pre>
+"https://Myridan/api/partTypes/{id}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-apiPartTypesIdDelete-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -4082,9 +4455,9 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
                             </div>
 
                             <div class="tab-pane" id="examples-Default-apiPartTypesIdDelete-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var PartmanagerApiApi = require('partmanager_api_api');
+                              <pre class="prettyprint"><code class="language-js">var MyridanApi = require('myridan_api');
 
-var api = new PartmanagerApiApi.DefaultApi()
+var api = new MyridanApi.DefaultApi()
 var id = ; // {{}} 
 
 var callback = function(error, data, response) {
@@ -4352,7 +4725,7 @@ except ApiException as e:
                           <div class="tab-pane active" id="examples-Default-apiPartTypesIdGet-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X GET\
 -H "Accept: */*"\
-"http://127.0.0.1:8080/api/partTypes/{id}"</code></pre>
+"https://Myridan/api/partTypes/{id}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-apiPartTypesIdGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -4420,9 +4793,9 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
                             </div>
 
                             <div class="tab-pane" id="examples-Default-apiPartTypesIdGet-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var PartmanagerApiApi = require('partmanager_api_api');
+                              <pre class="prettyprint"><code class="language-js">var MyridanApi = require('myridan_api');
 
-var api = new PartmanagerApiApi.DefaultApi()
+var api = new MyridanApi.DefaultApi()
 var id = ; // {{}} 
 
 var callback = function(error, data, response) {
@@ -4739,7 +5112,7 @@ except ApiException as e:
                            <pre class="prettyprint"><code class="language-bsh">curl -X POST\
 -H "Accept: */*"\
 -H "Content-Type: application/json"\
-"http://127.0.0.1:8080/api/partTypes"</code></pre>
+"https://Myridan/api/partTypes"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-apiPartTypesPost-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -4807,9 +5180,9 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
                             </div>
 
                             <div class="tab-pane" id="examples-Default-apiPartTypesPost-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var PartmanagerApiApi = require('partmanager_api_api');
+                              <pre class="prettyprint"><code class="language-js">var MyridanApi = require('myridan_api');
 
-var api = new PartmanagerApiApi.DefaultApi()
+var api = new MyridanApi.DefaultApi()
 var body = ; // {{PartType}} 
 
 var callback = function(error, data, response) {
@@ -5046,7 +5419,7 @@ except ApiException as e:
                           <div class="tab-pane active" id="examples-Default-apiPartsGet-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X GET\
 -H "Accept: */*"\
-"http://127.0.0.1:8080/api/parts"</code></pre>
+"https://Myridan/api/parts"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-apiPartsGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -5106,9 +5479,9 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
                             </div>
 
                             <div class="tab-pane" id="examples-Default-apiPartsGet-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var PartmanagerApiApi = require('partmanager_api_api');
+                              <pre class="prettyprint"><code class="language-js">var MyridanApi = require('myridan_api');
 
-var api = new PartmanagerApiApi.DefaultApi()
+var api = new MyridanApi.DefaultApi()
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -5295,7 +5668,7 @@ except ApiException as e:
                           <div class="tab-pane active" id="examples-Default-apiPartsIdDelete-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE\
 -H "Accept: */*"\
-"http://127.0.0.1:8080/api/parts/{id}"</code></pre>
+"https://Myridan/api/parts/{id}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-apiPartsIdDelete-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -5363,9 +5736,9 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
                             </div>
 
                             <div class="tab-pane" id="examples-Default-apiPartsIdDelete-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var PartmanagerApiApi = require('partmanager_api_api');
+                              <pre class="prettyprint"><code class="language-js">var MyridanApi = require('myridan_api');
 
-var api = new PartmanagerApiApi.DefaultApi()
+var api = new MyridanApi.DefaultApi()
 var id = ; // {{}} 
 
 var callback = function(error, data, response) {
@@ -5633,7 +6006,7 @@ except ApiException as e:
                           <div class="tab-pane active" id="examples-Default-apiPartsIdGet-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X GET\
 -H "Accept: */*"\
-"http://127.0.0.1:8080/api/parts/{id}"</code></pre>
+"https://Myridan/api/parts/{id}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-apiPartsIdGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -5701,9 +6074,9 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
                             </div>
 
                             <div class="tab-pane" id="examples-Default-apiPartsIdGet-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var PartmanagerApiApi = require('partmanager_api_api');
+                              <pre class="prettyprint"><code class="language-js">var MyridanApi = require('myridan_api');
 
-var api = new PartmanagerApiApi.DefaultApi()
+var api = new MyridanApi.DefaultApi()
 var id = ; // {{}} 
 
 var callback = function(error, data, response) {
@@ -6020,7 +6393,7 @@ except ApiException as e:
                            <pre class="prettyprint"><code class="language-bsh">curl -X POST\
 -H "Accept: */*"\
 -H "Content-Type: application/json"\
-"http://127.0.0.1:8080/api/parts"</code></pre>
+"https://Myridan/api/parts"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-apiPartsPost-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -6088,9 +6461,9 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
                             </div>
 
                             <div class="tab-pane" id="examples-Default-apiPartsPost-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var PartmanagerApiApi = require('partmanager_api_api');
+                              <pre class="prettyprint"><code class="language-js">var MyridanApi = require('myridan_api');
 
-var api = new PartmanagerApiApi.DefaultApi()
+var api = new MyridanApi.DefaultApi()
 var body = ; // {{Part}} 
 
 var callback = function(error, data, response) {
@@ -6293,6 +6666,358 @@ except ApiException as e:
                         </article>
                       </div>
                       <hr>
+                    <div id="api-Default-apiRegisterPost">
+                      <article id="api-Default-apiRegisterPost-0" data-group="User" data-name="apiRegisterPost" data-version="0">
+                        <div class="pull-left">
+                          <h1>apiRegisterPost</h1>
+                          <p></p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/api/register</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Default-apiRegisterPost-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Default-apiRegisterPost-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Default-apiRegisterPost-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Default-apiRegisterPost-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Default-apiRegisterPost-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Default-apiRegisterPost-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Default-apiRegisterPost-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Default-apiRegisterPost-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Default-apiRegisterPost-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Default-apiRegisterPost-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Default-apiRegisterPost-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Default-apiRegisterPost-0-curl">
+                           <pre class="prettyprint"><code class="language-bsh">curl -X POST\
+-H "Accept: */*"\
+-H "Content-Type: application/json"\
+"https://Myridan/api/register"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Default-apiRegisterPost-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.DefaultApi;
+
+import java.io.File;
+import java.util.*;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        
+        DefaultApi apiInstance = new DefaultApi();
+        RegisterRequest body = ; // RegisterRequest | 
+        try {
+            apiInstance.apiRegisterPost(body);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#apiRegisterPost");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Default-apiRegisterPost-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        DefaultApi apiInstance = new DefaultApi();
+        RegisterRequest body = ; // RegisterRequest | 
+        try {
+            apiInstance.apiRegisterPost(body);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#apiRegisterPost");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Default-apiRegisterPost-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Default-apiRegisterPost-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">RegisterRequest *body = ; // 
+
+DefaultApi *apiInstance = [[DefaultApi alloc] init];
+
+[apiInstance apiRegisterPostWith:body
+              completionHandler: ^(NSError* error) {
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-apiRegisterPost-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var MyridanApi = require('myridan_api');
+
+var api = new MyridanApi.DefaultApi()
+var body = ; // {{RegisterRequest}} 
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+api.apiRegisterPost(body, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Default-apiRegisterPost-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Default-apiRegisterPost-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class apiRegisterPostExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new DefaultApi();
+            var body = new RegisterRequest(); // RegisterRequest | 
+
+            try
+            {
+                apiInstance.apiRegisterPost(body);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.apiRegisterPost: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-apiRegisterPost-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\ApiDefaultApi();
+$body = ; // RegisterRequest | 
+
+try {
+    $api_instance->apiRegisterPost($body);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->apiRegisterPost: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-apiRegisterPost-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::DefaultApi;
+
+my $api_instance = WWW::SwaggerClient::DefaultApi->new();
+my $body = WWW::SwaggerClient::Object::RegisterRequest->new(); # RegisterRequest | 
+
+eval { 
+    $api_instance->apiRegisterPost(body => $body);
+};
+if ($@) {
+    warn "Exception when calling DefaultApi->apiRegisterPost: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-apiRegisterPost-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+body =  # RegisterRequest | 
+
+try: 
+    api_instance.api_register_post(body)
+except ApiException as e:
+    print("Exception when calling DefaultApi->apiRegisterPost: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+                            <div class="methodsubtabletitle">Body parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">body <span style="color:red;">*</span></td>
+                                <td>
+                                
+                                
+                                <script>
+                                $(document).ready(function() {
+                                  var schemaWrapper = {
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/RegisterRequest"
+      }
+    }
+  },
+  "required" : true
+};
+                                  var schema = schemaWrapper.content["application/json"].schema;
+                                  if (schema.$ref != null) {
+                                    schema = defsParser.$refs.get(schema.$ref);
+                                  } else {
+                                    schemaWrapper.components = {};
+                                    schemaWrapper.components.schemas = Object.assign({}, defs);
+                                    $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                      console.log(err);
+                                    });
+                                  }
+                                
+                                  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+                                  var result = $('#d2e199_apiRegisterPost_body');
+                                  result.empty();
+                                  result.append(view.render());
+                                });
+                                </script>
+                                <div id="d2e199_apiRegisterPost_body"></div>
+                                </td>
+                                </tr>
+                            </table>
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 409 - Conflict </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-apiRegisterPost-409-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-apiRegisterPost-409-schema">
+                                  <div id='responses-apiRegisterPost-409-schema-409' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Conflict",
+  "content" : {
+    "*/*" : {
+      "schema" : {
+        "x-content-type" : "*/*"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["*/*"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-apiRegisterPost-409-schema-data').val(stringify(schema));
+                                        var result = $('#responses-apiRegisterPost-409-schema-409');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-apiRegisterPost-409-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 201 - Created </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-apiRegisterPost-201-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-apiRegisterPost-201-schema">
+                                  <div id='responses-apiRegisterPost-201-schema-201' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Created",
+  "content" : {
+    "*/*" : {
+      "schema" : {
+        "x-content-type" : "*/*"
+      },
+      "examples" : {
+        "Example#1" : {
+          "value" : "User registered"
+        }
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["*/*"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-apiRegisterPost-201-schema-data').val(stringify(schema));
+                                        var result = $('#responses-apiRegisterPost-201-schema-201');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-apiRegisterPost-201-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
                     <div id="api-Default-apiShelfsGet">
                       <article id="api-Default-apiShelfsGet-0" data-group="User" data-name="apiShelfsGet" data-version="0">
                         <div class="pull-left">
@@ -6327,7 +7052,7 @@ except ApiException as e:
                           <div class="tab-pane active" id="examples-Default-apiShelfsGet-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X GET\
 -H "Accept: */*"\
-"http://127.0.0.1:8080/api/shelfs"</code></pre>
+"https://Myridan/api/shelfs"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-apiShelfsGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -6387,9 +7112,9 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
                             </div>
 
                             <div class="tab-pane" id="examples-Default-apiShelfsGet-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var PartmanagerApiApi = require('partmanager_api_api');
+                              <pre class="prettyprint"><code class="language-js">var MyridanApi = require('myridan_api');
 
-var api = new PartmanagerApiApi.DefaultApi()
+var api = new MyridanApi.DefaultApi()
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -6576,7 +7301,7 @@ except ApiException as e:
                           <div class="tab-pane active" id="examples-Default-apiShelfsIdDelete-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE\
 -H "Accept: */*"\
-"http://127.0.0.1:8080/api/shelfs/{id}"</code></pre>
+"https://Myridan/api/shelfs/{id}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-apiShelfsIdDelete-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -6644,9 +7369,9 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
                             </div>
 
                             <div class="tab-pane" id="examples-Default-apiShelfsIdDelete-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var PartmanagerApiApi = require('partmanager_api_api');
+                              <pre class="prettyprint"><code class="language-js">var MyridanApi = require('myridan_api');
 
-var api = new PartmanagerApiApi.DefaultApi()
+var api = new MyridanApi.DefaultApi()
 var id = ; // {{}} 
 
 var callback = function(error, data, response) {
@@ -6914,7 +7639,7 @@ except ApiException as e:
                           <div class="tab-pane active" id="examples-Default-apiShelfsIdGet-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X GET\
 -H "Accept: */*"\
-"http://127.0.0.1:8080/api/shelfs/{id}"</code></pre>
+"https://Myridan/api/shelfs/{id}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-apiShelfsIdGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -6982,9 +7707,9 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
                             </div>
 
                             <div class="tab-pane" id="examples-Default-apiShelfsIdGet-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var PartmanagerApiApi = require('partmanager_api_api');
+                              <pre class="prettyprint"><code class="language-js">var MyridanApi = require('myridan_api');
 
-var api = new PartmanagerApiApi.DefaultApi()
+var api = new MyridanApi.DefaultApi()
 var id = ; // {{}} 
 
 var callback = function(error, data, response) {
@@ -7301,7 +8026,7 @@ except ApiException as e:
                            <pre class="prettyprint"><code class="language-bsh">curl -X POST\
 -H "Accept: */*"\
 -H "Content-Type: application/json"\
-"http://127.0.0.1:8080/api/shelfs"</code></pre>
+"https://Myridan/api/shelfs"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-apiShelfsPost-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -7369,9 +8094,9 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
                             </div>
 
                             <div class="tab-pane" id="examples-Default-apiShelfsPost-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var PartmanagerApiApi = require('partmanager_api_api');
+                              <pre class="prettyprint"><code class="language-js">var MyridanApi = require('myridan_api');
 
-var api = new PartmanagerApiApi.DefaultApi()
+var api = new MyridanApi.DefaultApi()
 var body = ; // {{Shelf}} 
 
 var callback = function(error, data, response) {
@@ -7608,7 +8333,7 @@ except ApiException as e:
                           <div class="tab-pane active" id="examples-Default-apiTraysGet-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X GET\
 -H "Accept: */*"\
-"http://127.0.0.1:8080/api/trays"</code></pre>
+"https://Myridan/api/trays"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-apiTraysGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -7668,9 +8393,9 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
                             </div>
 
                             <div class="tab-pane" id="examples-Default-apiTraysGet-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var PartmanagerApiApi = require('partmanager_api_api');
+                              <pre class="prettyprint"><code class="language-js">var MyridanApi = require('myridan_api');
 
-var api = new PartmanagerApiApi.DefaultApi()
+var api = new MyridanApi.DefaultApi()
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -7857,7 +8582,7 @@ except ApiException as e:
                           <div class="tab-pane active" id="examples-Default-apiTraysIdDelete-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE\
 -H "Accept: */*"\
-"http://127.0.0.1:8080/api/trays/{id}"</code></pre>
+"https://Myridan/api/trays/{id}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-apiTraysIdDelete-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -7925,9 +8650,9 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
                             </div>
 
                             <div class="tab-pane" id="examples-Default-apiTraysIdDelete-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var PartmanagerApiApi = require('partmanager_api_api');
+                              <pre class="prettyprint"><code class="language-js">var MyridanApi = require('myridan_api');
 
-var api = new PartmanagerApiApi.DefaultApi()
+var api = new MyridanApi.DefaultApi()
 var id = ; // {{}} 
 
 var callback = function(error, data, response) {
@@ -8195,7 +8920,7 @@ except ApiException as e:
                           <div class="tab-pane active" id="examples-Default-apiTraysIdGet-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X GET\
 -H "Accept: */*"\
-"http://127.0.0.1:8080/api/trays/{id}"</code></pre>
+"https://Myridan/api/trays/{id}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-apiTraysIdGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -8263,9 +8988,9 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
                             </div>
 
                             <div class="tab-pane" id="examples-Default-apiTraysIdGet-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var PartmanagerApiApi = require('partmanager_api_api');
+                              <pre class="prettyprint"><code class="language-js">var MyridanApi = require('myridan_api');
 
-var api = new PartmanagerApiApi.DefaultApi()
+var api = new MyridanApi.DefaultApi()
 var id = ; // {{}} 
 
 var callback = function(error, data, response) {
@@ -8582,7 +9307,7 @@ except ApiException as e:
                            <pre class="prettyprint"><code class="language-bsh">curl -X POST\
 -H "Accept: */*"\
 -H "Content-Type: application/json"\
-"http://127.0.0.1:8080/api/trays"</code></pre>
+"https://Myridan/api/trays"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-apiTraysPost-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -8650,9 +9375,9 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
                             </div>
 
                             <div class="tab-pane" id="examples-Default-apiTraysPost-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var PartmanagerApiApi = require('partmanager_api_api');
+                              <pre class="prettyprint"><code class="language-js">var MyridanApi = require('myridan_api');
 
-var api = new PartmanagerApiApi.DefaultApi()
+var api = new MyridanApi.DefaultApi()
 var body = ; // {{Tray}} 
 
 var callback = function(error, data, response) {
@@ -8889,7 +9614,7 @@ except ApiException as e:
                           <div class="tab-pane active" id="examples-Default-jsonGsonGet-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X GET\
 -H "Accept: */*"\
-"http://127.0.0.1:8080/json/gson"</code></pre>
+"https://Myridan/json/gson"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-jsonGsonGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -8954,9 +9679,9 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
                             </div>
 
                             <div class="tab-pane" id="examples-Default-jsonGsonGet-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var PartmanagerApiApi = require('partmanager_api_api');
+                              <pre class="prettyprint"><code class="language-js">var MyridanApi = require('myridan_api');
 
-var api = new PartmanagerApiApi.DefaultApi()
+var api = new MyridanApi.DefaultApi()
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -9144,7 +9869,7 @@ except ApiException as e:
                           <div class="tab-pane active" id="examples-Default-jsonJacksonGet-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X GET\
 -H "Accept: */*"\
-"http://127.0.0.1:8080/json/jackson"</code></pre>
+"https://Myridan/json/jackson"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-jsonJacksonGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -9209,9 +9934,9 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
                             </div>
 
                             <div class="tab-pane" id="examples-Default-jsonJacksonGet-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var PartmanagerApiApi = require('partmanager_api_api');
+                              <pre class="prettyprint"><code class="language-js">var MyridanApi = require('myridan_api');
 
-var api = new PartmanagerApiApi.DefaultApi()
+var api = new MyridanApi.DefaultApi()
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -9399,7 +10124,7 @@ except ApiException as e:
                           <div class="tab-pane active" id="examples-Default-jsonKotlinxSerializationGet-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X GET\
 -H "Accept: */*"\
-"http://127.0.0.1:8080/json/kotlinx-serialization"</code></pre>
+"https://Myridan/json/kotlinx-serialization"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-jsonKotlinxSerializationGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -9464,9 +10189,9 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
                             </div>
 
                             <div class="tab-pane" id="examples-Default-jsonKotlinxSerializationGet-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var PartmanagerApiApi = require('partmanager_api_api');
+                              <pre class="prettyprint"><code class="language-js">var MyridanApi = require('myridan_api');
 
-var api = new PartmanagerApiApi.DefaultApi()
+var api = new MyridanApi.DefaultApi()
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -9614,257 +10339,6 @@ except ApiException as e:
                                     </script>
                                   </div>
                                   <input id='responses-jsonKotlinxSerializationGet-200-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-
-                        </article>
-                      </div>
-                      <hr>
-                    <div id="api-Default-rootGet">
-                      <article id="api-Default-rootGet-0" data-group="User" data-name="rootGet" data-version="0">
-                        <div class="pull-left">
-                          <h1>rootGet</h1>
-                          <p></p>
-                        </div>
-                        <div class="pull-right"></div>
-                        <div class="clearfix"></div>
-                        <p></p>
-                        <p class="marked"></p>
-                        <p></p>
-                        <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/</span></code></pre>
-                        <p>
-                          <h3>Usage and SDK Samples</h3>
-                        </p>
-                        <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Default-rootGet-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Default-rootGet-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Default-rootGet-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Default-rootGet-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Default-rootGet-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Default-rootGet-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Default-rootGet-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Default-rootGet-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Default-rootGet-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Default-rootGet-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Default-rootGet-0-python">Python</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Default-rootGet-0-curl">
-                           <pre class="prettyprint"><code class="language-bsh">curl -X GET\
--H "Accept: */*"\
-"http://127.0.0.1:8080/"</code></pre>
-                          </div>
-                          <div class="tab-pane" id="examples-Default-rootGet-0-java">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
-import io.swagger.client.auth.*;
-import io.swagger.client.model.*;
-import io.swagger.client.api.DefaultApi;
-
-import java.io.File;
-import java.util.*;
-
-public class DefaultApiExample {
-
-    public static void main(String[] args) {
-        
-        DefaultApi apiInstance = new DefaultApi();
-        try {
-            apiInstance.rootGet();
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#rootGet");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Default-rootGet-0-android">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
-
-public class DefaultApiExample {
-
-    public static void main(String[] args) {
-        DefaultApi apiInstance = new DefaultApi();
-        try {
-            apiInstance.rootGet();
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#rootGet");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-Default-rootGet-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-Default-rootGet-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">
-DefaultApi *apiInstance = [[DefaultApi alloc] init];
-
-[apiInstance rootGetWithCompletionHandler: 
-              ^(NSError* error) {
-                            if (error) {
-                                NSLog(@"Error: %@", error);
-                            }
-                        }];
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-rootGet-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var PartmanagerApiApi = require('partmanager_api_api');
-
-var api = new PartmanagerApiApi.DefaultApi()
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-api.rootGet(callback);
-</code></pre>
-                            </div>
-
-                            <!--<div class="tab-pane" id="examples-Default-rootGet-0-angular">
-              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-            </div>-->
-                            <div class="tab-pane" id="examples-Default-rootGet-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
-
-namespace Example
-{
-    public class rootGetExample
-    {
-        public void main()
-        {
-
-            var apiInstance = new DefaultApi();
-
-            try
-            {
-                apiInstance.rootGet();
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling DefaultApi.rootGet: " + e.Message );
-            }
-        }
-    }
-}
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-rootGet-0-php">
-                              <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-$api_instance = new Swagger\Client\ApiDefaultApi();
-
-try {
-    $api_instance->rootGet();
-} catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->rootGet: ', $e->getMessage(), PHP_EOL;
-}
-?></code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-rootGet-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::SwaggerClient::Configuration;
-use WWW::SwaggerClient::DefaultApi;
-
-my $api_instance = WWW::SwaggerClient::DefaultApi->new();
-
-eval { 
-    $api_instance->rootGet();
-};
-if ($@) {
-    warn "Exception when calling DefaultApi->rootGet: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-rootGet-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import swagger_client
-from swagger_client.rest import ApiException
-from pprint import pprint
-
-# create an instance of the API class
-api_instance = swagger_client.DefaultApi()
-
-try: 
-    api_instance.root_get()
-except ApiException as e:
-    print("Exception when calling DefaultApi->rootGet: %s\n" % e)</code></pre>
-                            </div>
-                          </div>
-
-                          <h2>Parameters</h2>
-
-
-
-
-
-
-                          <h2>Responses</h2>
-                            <h3> Status: 200 - OK </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-rootGet-200-schema">Schema</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-rootGet-200-schema">
-                                  <div id='responses-rootGet-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = {
-  "description" : "OK",
-  "content" : {
-    "*/*" : {
-      "schema" : {
-        "x-content-type" : "*/*"
-      },
-      "examples" : {
-        "Example#1" : {
-          "value" : "Hello from an eWolveLabs product"
-        }
-      }
-    }
-  }
-};
-                                        var schema = schemaWrapper.content["*/*"].schema;
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                        } else {
-                                          schemaWrapper.components = {};
-                                          schemaWrapper.components.schemas = Object.assign({}, defs);
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        //console.log(JSON.stringify(schema));
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-rootGet-200-schema-data').val(stringify(schema));
-                                        var result = $('#responses-rootGet-200-schema-200');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-rootGet-200-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
 
