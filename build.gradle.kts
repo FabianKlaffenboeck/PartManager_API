@@ -15,6 +15,10 @@ plugins {
 group = "at.eWolveLabs"
 version = "0.0.1"
 
+jacoco {
+    toolVersion = "0.8.13"
+}
+
 tasks.test {
     useJUnitPlatform()
     finalizedBy(tasks.jacocoTestReport)
